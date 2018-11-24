@@ -1,55 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
-namespace Homework1
+namespace Homework
 {
-    class POSCustomerSideModel
+    class Model
     {
         private int _page = 0;
         private Meal _selectedMeal = null;
         private Order _order = new Order();
         private List<Meal> _mealList = new List<Meal>();
+        const String MEAL_NAME_PATH = "/mealName.txt";
+        const String MEAL_PRICE_PATH = "/mealPrice.txt";
+        const String MEAL_IMAGE_PATH = "/mealImagePath.txt";
+        const String MEAL_DESCRIBE_PATH = "/mealDescribe.txt";
         const String PAGE = "Page：";
         const String SLASH = " / ";
         const String TOTAL = "Total：";
         const String UNIT = "元";
-        const String MEAL1 = "大麥克";
-        const String MEAL2 = "牛肉吉士堡";
-        const String MEAL3 = "四盎司牛肉堡";
-        const String MEAL4 = "培根牛肉堡";
-        const String MEAL5 = "麥香魚";
-        const String MEAL6 = "麥香雞";
-        const String MEAL7 = "勁辣雞腿堡";
-        const String MEAL8 = "板烤雞腿堡";
-        const String MEAL9 = "起司豬排堡";
-        const String MEAL10 = "大大雞腿堡";
-        const String MEAL11 = "六塊麥克雞塊";
-        const String MEAL12 = "千島黃金蝦堡";
-        const String MEAL13 = "安格斯黑牛堡";
-        const String MEAL14 = "嫩煎雞腿堡";
-        const String MEAL15 = "辣脆雞腿堡";
         const int BUTTONS = 9;
         const int BASE = 10;
-        const int PRICE49 = 49;
-        const int PRICE53 = 53;
-        const int PRICE59 = 59;
-        const int PRICE69 = 69;
-        const int PRICE79 = 79;
-        const int PRICE99 = 99;
-        const int PRICE109 = 109;
         // 建立基礎菜單
         public void CreateInitialMeals()
         {
-            String[] meals = new String[]
-            { MEAL1, MEAL2, MEAL3, MEAL4, MEAL5,
-                MEAL6, MEAL7, MEAL8, MEAL9, MEAL10,
-                MEAL11, MEAL12, MEAL13, MEAL14, MEAL15 };
-            int[] prices = new int[]
-            { PRICE69, PRICE59, PRICE79, PRICE99, PRICE49,
-                PRICE49, PRICE69, PRICE79, PRICE53, PRICE53,
-                PRICE59, PRICE69, PRICE109, PRICE109, PRICE109 };
-            for (int i = 0; i < prices.Length; i++)
-                _mealList.Add(new Meal(meals[i], prices[i]));
+            List<String> meals = new List<string>();
+            ReadFile(meals, MEAL_NAME_PATH);
+            List<String> prices = new List<string>();
+            ReadFile(prices, MEAL_PRICE_PATH);
+            List<String> mealImagePath = new List<string>();
+            ReadFile(mealImagePath, MEAL_IMAGE_PATH);
+            List<String> mealDescribe = new List<string>();
+            ReadFile(mealDescribe, MEAL_DESCRIBE_PATH);
+            for (int i = 0; i < meals.Count; i++)
+                _mealList.Add(new Meal(meals[i], Int32.Parse(prices[i]), mealImagePath[i], mealDescribe[i]));
+        }
+
+        //讀檔
+        public void ReadFile(List<String> list, String path)
+        {
+            String projectPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            String line;
+            StreamReader file = new StreamReader(projectPath + path, System.Text.Encoding.Default);
+            while ((line = file.ReadLine()) != null)
+                list.Add(line);
         }
 
         //取得菜單
@@ -119,6 +112,29 @@ namespace Homework1
             else
                 totalPage = _mealList.Count / BUTTONS + 1;
             return PAGE + (_page + 1).ToString() + SLASH + totalPage.ToString();
+        }
+
+        //金額字串轉數值
+        public int ChangeInteger(String price)
+        {
+            int integer = 0;
+            const int TEN = 10;
+            const Char ZERO = '0';
+            for (int i = 0; i < price.Length; i++)
+            {
+                if (char.IsDigit(price[i]))
+                    integer = integer * TEN + (price[i] - ZERO);
+                else
+                    break;
+            }
+            return integer;
+        }
+
+        //扣除金額
+        public String SubtractPrice(String price)
+        {
+            int subtract = ChangeInteger(price) * (-1);
+            return GetTotalPrice(subtract);
         }
     }
 }

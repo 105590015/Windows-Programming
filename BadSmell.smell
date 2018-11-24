@@ -191,53 +191,83 @@
           <AnalysisFileManager>
             <AnalysisFiles>
               <AnalysisFile>
+                <RelativePath>CustomerFormPresentationModel.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Meal.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Order.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
+                <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>POSCustomerSideForm.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
+                <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>POSCustomerSideForm.Designer.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
+                <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>POSCustomerSideModel.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <RelativePath>POSRestaurantSideForm.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>POSRestaurantSideForm.Designer.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Program.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
+                <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
+                <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Properties\Resources.Designer.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
+                <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Properties\Settings.Designer.cs</RelativePath>
-                <ProjectName>Homework1</ProjectName>
+                <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>StartUpForm.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>StartUpForm.Designer.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>StartUpFormPresentationModel.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>496</ProductionLoc>
+          <ProductionLoc>982</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>
