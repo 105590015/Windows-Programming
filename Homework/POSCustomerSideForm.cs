@@ -143,7 +143,10 @@ namespace Homework
             if (categoriesList.Count != _tabControl.Controls.Count)
                 ResetTabPage(categoriesList);
             else
+            {
+                ((TabPage)(_tabControl.Controls[_tabControl.SelectedIndex])).Text = categoriesList[_tabControl.SelectedIndex].Name;
                 ResetMealButton(_tabControl.SelectedIndex);
+            }
             _customerFormPresentationModel.ClearMeal();
             _descriptionBox.Text = _customerFormPresentationModel.GetDescriptionText();
             _customerFormPresentationModel.ChangeCategory(_tabControl.SelectedIndex);

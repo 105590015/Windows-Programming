@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Homework
@@ -25,7 +19,7 @@ namespace Homework
             _mealDetailGroupBox.DataBindings.Add(TEXT, _restaurantFormMealPresentationModel, "MealGroupBoxTitle");
             _enterMealButton.DataBindings.Add(TEXT, _restaurantFormMealPresentationModel, "EnterMealButtonText");
             _enterMealButton.DataBindings.Add(ENABLE, _restaurantFormMealPresentationModel, "EnterMealEnable");
-            _deleteMealButton.DataBindings.Add(ENABLE, _restaurantFormMealPresentationModel.GetModel(), "DeleteMealEnable");
+            _deleteMealButton.DataBindings.Add(ENABLE, _restaurantFormMealPresentationModel.GetModel().GetComputeModel(), "DeleteMealEnable");
             _browseButton.DataBindings.Add(ENABLE, _restaurantFormMealPresentationModel, "BrowseEnable");
             _mealNameTextBox.DataBindings.Add(ENABLE, _restaurantFormMealPresentationModel, "MealNameEnable");
             _mealPriceTextBox.DataBindings.Add(ENABLE, _restaurantFormMealPresentationModel, "MealPriceEnable");
@@ -35,11 +29,13 @@ namespace Homework
             _categoryDetailGroupBox.DataBindings.Add(TEXT, _restaurantFormCategoryPresentationModel, "CategoryGroupBoxTitle");
             _enterCategoryButton.DataBindings.Add(TEXT, _restaurantFormCategoryPresentationModel, "EnterCategoryButtonText");
             _enterCategoryButton.DataBindings.Add(ENABLE, _restaurantFormCategoryPresentationModel, "EnterCategoryEnable");
-            _deleteCategoryButton.DataBindings.Add(ENABLE, _restaurantFormCategoryPresentationModel, "DeleteCategoryEnable");
+            _deleteCategoryButton.DataBindings.Add(ENABLE, _restaurantFormCategoryPresentationModel.GetModel().GetComputeModel(), "DeleteCategoryEnable");
             _categoryNameTextBox.DataBindings.Add(ENABLE, _restaurantFormCategoryPresentationModel, "CategoryNameEnable");
             _mealListBox.DataSource = _restaurantFormMealPresentationModel.GetModel().MealsList;
             _mealListBox.DisplayMember = NAME;
             _mealListBox.ClearSelected();
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedMealOfRestaurant(-1);
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedCategoryOfRestaurant(-1);
             _categoryComboBox.DataSource = _restaurantFormMealPresentationModel.GetModel().CategoriesList;
             _categoryComboBox.DisplayMember = NAME;
             _categoryListBox.DataSource = _restaurantFormCategoryPresentationModel.GetModel().CategoriesList;
@@ -58,6 +54,7 @@ namespace Homework
             _categoryComboBox.Text = _restaurantFormMealPresentationModel.GetMealCategory();
             _imagePathTextBox.Text = _restaurantFormMealPresentationModel.GetMealImagePath();
             _mealDescriptionTextBox.Text = _restaurantFormMealPresentationModel.GetMealDescription();
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedMealOfRestaurant(_mealListBox.SelectedIndex);
         }
 
         //進入新增餐點模式
@@ -70,12 +67,23 @@ namespace Homework
             _imagePathTextBox.Text = _restaurantFormMealPresentationModel.GetMealImagePath();
             _mealDescriptionTextBox.Text = _restaurantFormMealPresentationModel.GetMealDescription();
             _mealListBox.ClearSelected();
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedMealOfRestaurant(-1);
         }
 
         //瀏覽圖片位址
         private void BrowsePath(object sender, EventArgs e)
         {
-            _imagePathTextBox.Text = _restaurantFormMealPresentationModel.GetModel().GetComputeModel().BrowseImagePath();
+            const string FILTER = "Image|*.png;*.jpg;*.jpeg";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            openFileDialog.InitialDirectory = path;
+            openFileDialog.Multiselect = false;
+            openFileDialog.Filter = FILTER;
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+                _imagePathTextBox.Text = _restaurantFormMealPresentationModel.GetModel().GetComputeModel().TransformRelativePath(openFileDialog.FileName);
+            else
+                _imagePathTextBox.Text = "";
         }
 
         //判斷是否修改餐點數值
@@ -118,6 +126,7 @@ namespace Homework
             _imagePathTextBox.Text = _restaurantFormMealPresentationModel.GetMealImagePath();
             _mealDescriptionTextBox.Text = _restaurantFormMealPresentationModel.GetMealDescription();
             _mealListBox.ClearSelected();
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedMealOfRestaurant(-1);
         }
 
         //進入編輯類別模式
@@ -125,6 +134,7 @@ namespace Homework
         {
             _restaurantFormCategoryPresentationModel.ChangeEditCategoryMode(_categoryListBox.SelectedIndex);
             _categoryNameTextBox.Text = _restaurantFormCategoryPresentationModel.GetCategoryName();
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedCategoryOfRestaurant(_categoryListBox.SelectedIndex);
         }
 
         //進入新增類別模式
@@ -133,6 +143,7 @@ namespace Homework
             _restaurantFormCategoryPresentationModel.ChangeAddCategoryMode();
             _categoryNameTextBox.Text = _restaurantFormCategoryPresentationModel.GetCategoryName();
             _categoryListBox.ClearSelected();
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedCategoryOfRestaurant(-1);
         }
 
         //儲存或新增類別
@@ -155,14 +166,16 @@ namespace Homework
             _restaurantFormCategoryPresentationModel.ClearCategoryData();
             _categoryNameTextBox.Text = _restaurantFormCategoryPresentationModel.GetCategoryName();
             _categoryListBox.ClearSelected();
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedCategoryOfRestaurant(-1);
         }
 
         //改變TabPage
         public void ChangeTabPage(object sender, EventArgs e)
         {
             _mealListBox.ClearSelected();
-            _restaurantFormMealPresentationModel.GetModel().DisableMealDelete();
-            _categoryComboBox.SelectedIndex = 0;
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedMealOfRestaurant(-1);
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetDeleteMealEnable(false);
+            ResetSelectedMeal();
             _restaurantFormMealPresentationModel.ClearMealData();
             _mealNameTextBox.Text = _restaurantFormMealPresentationModel.GetMealName();
             _mealPriceTextBox.Text = _restaurantFormMealPresentationModel.GetMealPrice();
@@ -170,9 +183,22 @@ namespace Homework
             _imagePathTextBox.Text = _restaurantFormMealPresentationModel.GetMealImagePath();
             _mealDescriptionTextBox.Text = _restaurantFormMealPresentationModel.GetMealDescription();
             _categoryListBox.ClearSelected();
-            _restaurantFormCategoryPresentationModel.DisableCategoryDelete();
+            _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedCategoryOfRestaurant(-1);
+            _restaurantFormCategoryPresentationModel.GetModel().GetComputeModel().SetDeleteCategoryEnable(false);
             _restaurantFormCategoryPresentationModel.ClearCategoryData();
             _categoryNameTextBox.Text = _restaurantFormCategoryPresentationModel.GetCategoryName();
+        }
+
+        //重設選擇的餐點
+        public void ResetSelectedMeal()
+        {
+            try
+            {
+                _categoryComboBox.SelectedIndex = 0;
+            }
+            catch
+            {
+            }
         }
 
         //餐點資料連結管理

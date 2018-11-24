@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 
 namespace Homework
 {
-    public class Model : INotifyPropertyChanged
+    public class Model
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         public event ModelChangedEventHandler ModelChanged;
         public delegate void ModelChangedEventHandler();
         private ComputeModel _computeModel = new ComputeModel();
         private int _tabIndex;
-        private bool _deleteMealEnable;
         private Meal _selectedMeal;
         private BindingList<Meal> _mealsList = new BindingList<Meal>();
         private BindingList<Category> _categoriesList = new BindingList<Category>();
@@ -23,26 +20,15 @@ namespace Homework
         const string MEALS_PRICE_PATH = "/mealsPrice.txt";
         const string MEALS_IMAGE_PATH = "/mealsImagePath.txt";
         const string MEALS_DESCRIBE_PATH = "/mealsDescribe.txt";
-        const string DELETE_MEAL_ENABLE = "DeleteMealEnable";
         const string HAMBURGER = "漢堡";
         const string PACKAGE = "套餐";
         const string BEVERAGE = "飲料";
         const int BUTTONS = 9;
         public Model()
         {
-            _deleteMealEnable = false;
             CreateInitialCategories();
             CreateInitialMeals();
             _computeModel.ResetPage(_categoriesList[0].GetMeals().Count);
-        }
-
-        //刪除餐點的按鈕狀態
-        public bool DeleteMealEnable
-        {
-            get
-            {
-                return _deleteMealEnable;
-            }
         }
 
         //菜單列表
@@ -87,19 +73,24 @@ namespace Homework
             return _computeModel;
         }
 
-        //取消刪除功能
-        public void DisableMealDelete()
-        {
-            _deleteMealEnable = false;
-            NotifyPropertyChanged(DELETE_MEAL_ENABLE);
-        }
-
-        //判斷刪除餐點按鈕enable
+        //判斷是否可以刪除餐點
         public void JudgeDeleteMealEnable(int index)
         {
-            Meal meal = _mealsList[index];
-            _deleteMealEnable = _computeModel.JudgeDeleteMealEnable(meal, _ordersList);
-            NotifyPropertyChanged(DELETE_MEAL_ENABLE);
+            if (index > -1)
+            {
+                Meal meal = _mealsList[index];
+                _computeModel.JudgeDeleteMealEnable(meal, _ordersList);
+            }
+        }
+
+        //判斷是否可以刪除類別
+        public void JudgeDeleteCategoryEnable(int index)
+        {
+            if (index > -1)
+            {
+                List<Meal> meals = CategoriesList[index].GetMeals();
+                _computeModel.JudgeDeleteCategoryEnable(meals, OrdersList);
+            }
         }
 
         //建立基礎類別
@@ -191,13 +182,16 @@ namespace Homework
             }
             if (!repeat)
                 _ordersList.Add(new Order(meal.Name, meal.GetCategoryName(), meal.GetPrice(), 1, meal.GetPrice()));
+            JudgeDeleteMealEnable(_computeModel.GetSelectedMealOfRestaurant());
+            JudgeDeleteCategoryEnable(_computeModel.GetSelectedCategoryOfRestaurant());
         }
 
         //刪除點餐
         public void DeleteOrder(int position)
         {
             _ordersList.RemoveAt(position);
-            JudgeDeleteMealEnable(position);
+            JudgeDeleteMealEnable(_computeModel.GetSelectedMealOfRestaurant());
+            JudgeDeleteCategoryEnable(_computeModel.GetSelectedCategoryOfRestaurant());
         }
 
         //因菜單改變而更新訂單
@@ -248,8 +242,7 @@ namespace Homework
             Category category = meal.GetCategory();
             category.AddMeal(meal);
             _mealsList.Add(meal);
-            _deleteMealEnable = true;
-            NotifyPropertyChanged(DELETE_MEAL_ENABLE);
+            _computeModel.SetDeleteMealEnable(true);
             NotifyObserver();
         }
 
@@ -260,8 +253,7 @@ namespace Homework
             Category category = meal.GetCategory();
             category.GetMeals().Remove(meal);
             _mealsList.Remove(meal);
-            _deleteMealEnable = false;
-            NotifyPropertyChanged(DELETE_MEAL_ENABLE);
+            _computeModel.SetDeleteMealEnable(false);
             NotifyObserver();
         }
 
@@ -299,15 +291,9 @@ namespace Homework
         //刪除類別
         public void DeleteCategory(int index)
         {
+            _categoriesList[index].ClearMeals(_mealsList);
             _categoriesList.RemoveAt(index);
             NotifyObserver();
-        }
-
-        //通知數值變化
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         //通知View變化

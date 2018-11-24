@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Homework
 {
-    class RestaurantFormMealPresentationModel : INotifyPropertyChanged
+    public class RestaurantFormMealPresentationModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private Model _model;
@@ -37,6 +37,8 @@ namespace Homework
         const string ADD_MEAL = "Add Meal";
         const string SAVE = "Save";
         const string ADD = "Add";
+        const string INPUT_FAIL = "輸入資料不合法";
+        const string INPUT_ERROR = "輸入錯誤";
         public RestaurantFormMealPresentationModel(Model model)
         {
             _model = model;
@@ -219,7 +221,14 @@ namespace Homework
         public void ResetFieldData()
         {
             _mealName = "";
-            _mealCategory = _model.MealsList[0].GetCategoryName();
+            try
+            {
+                _mealCategory = _model.MealsList[0].GetCategoryName();
+            }
+            catch
+            {
+                _mealCategory = "";
+            }
             _mealPrice = "";
             _mealImagePath = "";
             _mealDescription = "";
@@ -247,14 +256,17 @@ namespace Homework
         //進入編輯餐點模式
         public void ChangeEditMealMode(int index)
         {
-            SetFieldEnable(true);
-            SearchMealData(index);
-            _mealGroupBoxTitle = EDIT_MEAL;
-            _enterMealButtonText = SAVE;
-            _model.JudgeDeleteMealEnable(index);
-            _enterMealEnable = false;
-            _browseEnable = true;
-            NotifyChangeDataOfMeal();
+            if (index > -1)
+            {
+                SetFieldEnable(true);
+                SearchMealData(index);
+                _mealGroupBoxTitle = EDIT_MEAL;
+                _enterMealButtonText = SAVE;
+                _model.JudgeDeleteMealEnable(index);
+                _enterMealEnable = false;
+                _browseEnable = true;
+                NotifyChangeDataOfMeal();
+            }
         }
 
         //進入新增餐點模式
@@ -264,7 +276,7 @@ namespace Homework
             ResetFieldData();
             _mealGroupBoxTitle = ADD_MEAL;
             _enterMealButtonText = ADD;
-            _model.DisableMealDelete();
+            _model.GetComputeModel().SetDeleteMealEnable(false);
             _enterMealEnable = false;
             _browseEnable = true;
             NotifyChangeDataOfMeal();
@@ -285,10 +297,9 @@ namespace Homework
             }
             catch
             {
-                const string INPUT_ILLEGAL = "輸入資料不合法";
-                const string INPUT_ERROR = "輸入錯誤";
-                MessageBox.Show(INPUT_ILLEGAL, INPUT_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SearchMealData(index);
+                MessageBox.Show(INPUT_FAIL, INPUT_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (_enterMealButtonText == SAVE)
+                    SearchMealData(index);
             }
         }
 

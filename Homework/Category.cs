@@ -51,6 +51,15 @@ namespace Homework
             }
         }
 
+        //清除此類別的餐點
+        public void ClearMeals(BindingList<Meal> mealsList)
+        {
+            for (int i = 0; i < _meals.Count; i++)
+            {
+                mealsList.Remove(_meals[i]);
+            }
+        }
+
         //通知數值變化
         public void NotifyPropertyChanged(string propertyName)
         {
