@@ -185,11 +185,89 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>ICS(Delegate與Event-3)</SmellType>
+              <HashCode>DelegateAndEvent3.Model.ModelChanged</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>Model.cs</File>
+              <Line>11</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(Delegate 與 Event-3) event 的變數命名如一般 class 中的成員變數</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>Long parameter list(過長參數列)</SmellType>
+              <HashCode>LongParameterList.RestaurantFormMealPresentationModel.JudgeModifyData.string name;string price;string category;string imagePath;string description;</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>5</Weight>
+              <Project>Homework</Project>
+              <File>RestaurantFormMealPresentationModel.cs</File>
+              <Line>296</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>108 目前物件 Homework.POSCustomerSideForm，使用物件的方法或屬性次數：1次，Envy到對象物件 Homework.Category，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Category.Name 以及 Homework.Category.Name</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\hjki3\source\repos\105590015\Homework\POSCustomerSideForm.cs</File>
+              <Line>108</Line>
+              <StartLine>107</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>108</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.POSCustomerSideForm，使用物件的方法或屬性次數：1次，Envy到對象物件 Homework.Category，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Category.Name 以及 Homework.Category.Name</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>238 目前物件 Homework.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Meal，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Meal.GetCategory() 以及 Homework.Meal.IsSameCategory(Homework.Meal)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\hjki3\source\repos\105590015\Homework\Model.cs</File>
+              <Line>238</Line>
+              <StartLine>237</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>238</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Meal，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Meal.GetCategory() 以及 Homework.Meal.IsSameCategory(Homework.Meal)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
-          <HashCodeRequestIgnoreList />
+          <HashCodeRequestIgnoreList>
+            <string>DelegateAndEvent3.Model.ModelChanged</string>
+            <string>LongParameterList.RestaurantFormMealPresentationModel.JudgeModifyData.string name;string price;string category;string imagePath;string description;</string>
+          </HashCodeRequestIgnoreList>
           <AnalysisFileManager>
             <AnalysisFiles>
+              <AnalysisFile>
+                <RelativePath>Category.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>ComputeModel.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>CustomerFormPresentationModel.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
@@ -251,6 +329,16 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>RestaurantFormCategoryPresentationModel.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>RestaurantFormMealPresentationModel.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>StartUpForm.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
@@ -265,10 +353,30 @@
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>DataGridViewNumericUpDownCell.cs</RelativePath>
+                <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>DataGridViewNumericUpDownColumn.cs</RelativePath>
+                <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>DataGridViewNumericUpDownEditingControl.cs</RelativePath>
+                <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
+                <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>982</ProductionLoc>
-          <TestLoc>0</TestLoc>
+          <ProductionLoc>2760</ProductionLoc>
+          <TestLoc>1503</TestLoc>
         </CodeReview>
       </Data>
     </div>

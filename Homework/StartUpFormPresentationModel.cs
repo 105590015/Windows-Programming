@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework
 {
-    class StartUpFormPresentationModel
+    public class StartUpFormPresentationModel
     {
         private bool _customerEnable;
         private bool _restaurantEnable;

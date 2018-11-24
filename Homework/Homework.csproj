@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
+    <Compile Include="ComputeModel.cs" />
     <Compile Include="CustomerFormPresentationModel.cs" />
     <Compile Include="Meal.cs" />
     <Compile Include="Order.cs" />
@@ -64,6 +66,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestaurantFormCategoryPresentationModel.cs" />
+    <Compile Include="RestaurantFormMealPresentationModel.cs" />
     <Compile Include="StartUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +93,7 @@
     <EmbeddedResource Include="StartUpForm.resx">
       <DependentUpon>StartUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Model.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,6 +109,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.csproj">
+      <Project>{82b50731-be90-433f-bb6e-9b509c5f3b7c}</Project>
+      <Name>DataGridViewNumericUpDownElements</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

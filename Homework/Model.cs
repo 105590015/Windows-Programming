@@ -1,67 +1,151 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 
 namespace Homework
 {
-    class Model
+    public class Model : INotifyPropertyChanged
     {
-        private int _page = 0;
-        private Meal _selectedMeal = null;
-        private Order _order = new Order();
-        private List<Meal> _mealList = new List<Meal>();
-        const String MEAL_NAME_PATH = "/mealName.txt";
-        const String MEAL_PRICE_PATH = "/mealPrice.txt";
-        const String MEAL_IMAGE_PATH = "/mealImagePath.txt";
-        const String MEAL_DESCRIBE_PATH = "/mealDescribe.txt";
-        const String PAGE = "Page：";
-        const String SLASH = " / ";
-        const String TOTAL = "Total：";
-        const String UNIT = "元";
+        public event PropertyChangedEventHandler PropertyChanged;
+        public event ModelChangedEventHandler ModelChanged;
+        public delegate void ModelChangedEventHandler();
+        private ComputeModel _computeModel = new ComputeModel();
+        private int _tabIndex;
+        private bool _deleteMealEnable;
+        private Meal _selectedMeal;
+        private BindingList<Meal> _mealsList = new BindingList<Meal>();
+        private BindingList<Category> _categoriesList = new BindingList<Category>();
+        private BindingList<Order> _ordersList = new BindingList<Order>();
+        private BindingList<Meal> _mealsUsingThisCategoryList = new BindingList<Meal>();
+        const string MEALS_NAME_PATH = "/mealsName.txt";
+        const string MEALS_CATEGORY_PATH = "/mealsCategory.txt";
+        const string MEALS_PRICE_PATH = "/mealsPrice.txt";
+        const string MEALS_IMAGE_PATH = "/mealsImagePath.txt";
+        const string MEALS_DESCRIBE_PATH = "/mealsDescribe.txt";
+        const string DELETE_MEAL_ENABLE = "DeleteMealEnable";
+        const string HAMBURGER = "漢堡";
+        const string PACKAGE = "套餐";
+        const string BEVERAGE = "飲料";
         const int BUTTONS = 9;
-        const int BASE = 10;
+        public Model()
+        {
+            _deleteMealEnable = false;
+            CreateInitialCategories();
+            CreateInitialMeals();
+            _computeModel.ResetPage(_categoriesList[0].GetMeals().Count);
+        }
+
+        //刪除餐點的按鈕狀態
+        public bool DeleteMealEnable
+        {
+            get
+            {
+                return _deleteMealEnable;
+            }
+        }
+
+        //菜單列表
+        public BindingList<Meal> MealsList
+        {
+            get
+            {
+                return _mealsList;
+            }
+        }
+
+        //類別列表
+        public BindingList<Category> CategoriesList
+        {
+            get
+            {
+                return _categoriesList;
+            }
+        }
+
+        //訂單資訊
+        public BindingList<Order> OrdersList
+        {
+            get
+            {
+                return _ordersList;
+            }
+        }
+
+        //使用目前類別的餐點列表
+        public BindingList<Meal> MealsUsingThisCategoryList
+        {
+            get
+            {
+                return _mealsUsingThisCategoryList;
+            }
+        }
+
+        //取得ComputeModel
+        public ComputeModel GetComputeModel()
+        {
+            return _computeModel;
+        }
+
+        //取消刪除功能
+        public void DisableMealDelete()
+        {
+            _deleteMealEnable = false;
+            NotifyPropertyChanged(DELETE_MEAL_ENABLE);
+        }
+
+        //判斷刪除餐點按鈕enable
+        public void JudgeDeleteMealEnable(int index)
+        {
+            Meal meal = _mealsList[index];
+            _deleteMealEnable = _computeModel.JudgeDeleteMealEnable(meal, _ordersList);
+            NotifyPropertyChanged(DELETE_MEAL_ENABLE);
+        }
+
+        //建立基礎類別
+        public void CreateInitialCategories()
+        {
+            Category hamburger = new Category(HAMBURGER);
+            _categoriesList.Add(hamburger);
+            Category package = new Category(PACKAGE);
+            _categoriesList.Add(package);
+            Category beverage = new Category(BEVERAGE);
+            _categoriesList.Add(beverage);
+        }
+
         // 建立基礎菜單
         public void CreateInitialMeals()
         {
-            List<String> meals = new List<string>();
-            ReadFile(meals, MEAL_NAME_PATH);
-            List<String> prices = new List<string>();
-            ReadFile(prices, MEAL_PRICE_PATH);
-            List<String> mealImagePath = new List<string>();
-            ReadFile(mealImagePath, MEAL_IMAGE_PATH);
-            List<String> mealDescribe = new List<string>();
-            ReadFile(mealDescribe, MEAL_DESCRIBE_PATH);
-            for (int i = 0; i < meals.Count; i++)
-                _mealList.Add(new Meal(meals[i], Int32.Parse(prices[i]), mealImagePath[i], mealDescribe[i]));
-        }
-
-        //讀檔
-        public void ReadFile(List<String> list, String path)
-        {
-            String projectPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-            String line;
-            StreamReader file = new StreamReader(projectPath + path, System.Text.Encoding.Default);
-            while ((line = file.ReadLine()) != null)
-                list.Add(line);
-        }
-
-        //取得菜單
-        public List<Meal> GetMealList()
-        {
-            return _mealList;
+            List<string> mealsNameList = new List<string>();
+            _computeModel.ReadFile(mealsNameList, MEALS_NAME_PATH);
+            List<string> mealsCategoryList = new List<string>();
+            _computeModel.ReadFile(mealsCategoryList, MEALS_CATEGORY_PATH);
+            List<string> mealsPriceList = new List<string>();
+            _computeModel.ReadFile(mealsPriceList, MEALS_PRICE_PATH);
+            List<string> mealImagePathList = new List<string>();
+            _computeModel.ReadFile(mealImagePathList, MEALS_IMAGE_PATH);
+            List<string> mealDescribeList = new List<string>();
+            _computeModel.ReadFile(mealDescribeList, MEALS_DESCRIBE_PATH);
+            for (int i = 0; i < mealsNameList.Count; i++)
+            {
+                Category category = GetCategoryByName(mealsCategoryList[i]);
+                Meal meal = new Meal(mealsNameList[i], category, Int32.Parse(mealsPriceList[i]), mealImagePathList[i], mealDescribeList[i]);
+                category.AddMeal(meal);
+                _mealsList.Add(meal);
+            }
         }
 
         //取得第index項餐點資料
         public Meal GetMeal(int index)
         {
-            return _mealList[_page * BUTTONS + index];
+            return _mealsList[_computeModel.GetPage() * BUTTONS + index];
         }
 
         //儲存被點擊的餐點
         public void SelectMeal(int whichButton)
         {
-            int whichMeal = _page * BUTTONS + whichButton;
-            _selectedMeal = _mealList[whichMeal];
+            int whichMeal = _computeModel.GetPage() * BUTTONS + whichButton;
+            _selectedMeal = _categoriesList[_tabIndex].GetMeals()[whichMeal];
         }
 
         //取得被點擊的餐點
@@ -70,71 +154,167 @@ namespace Homework
             return _selectedMeal;
         }
 
+        //取得對應名稱的類別
+        public Category GetCategoryByName(String name)
+        {
+            return _computeModel.GetCategoryByName(name, _categoriesList);
+        }
+
+        //切換類別頁面並更新頁碼資訊
+        public void ChangeCategory(int tabIndex)
+        {
+            _tabIndex = tabIndex;
+            _computeModel.ResetPage(_categoriesList[tabIndex].GetMeals().Count);
+        }
+
         //取得總金額資訊
-        public String GetTotalPrice(int price)
+        public string GetTotalPriceInformation()
         {
-            int prices;
-            _order.SetPrice(price);
-            prices = _order.GetPrices();
-            return TOTAL + prices.ToString() + UNIT;
+            const string TOTAL = "Total：";
+            const string UNIT = "元";
+            return TOTAL + _computeModel.GetTotalPrice(_ordersList).ToString() + UNIT;
         }
 
-        //換頁
-        public void ChangePage(int buttonIndex)
+        //加點餐點
+        public void AddOrder()
         {
-            _page += buttonIndex - BASE;
-        }
-
-        //控制上一頁按鈕enable
-        public bool EnablePreviousButton()
-        {
-            if (_page > 0)
-                return true;
-            else
-                return false;
-        }
-
-        //控制下一頁按鈕enable
-        public bool EnableNextButton()
-        {
-            if (_mealList.Count - (_page + 1) * BUTTONS > 0)
-                return true;
-            else
-                return false;
-        }
-
-        //取得頁碼資訊
-        public String GetPageInformation()
-        {
-            int totalPage;
-            if (_mealList.Count % BUTTONS == 0)
-                totalPage = _mealList.Count / BUTTONS;
-            else
-                totalPage = _mealList.Count / BUTTONS + 1;
-            return PAGE + (_page + 1).ToString() + SLASH + totalPage.ToString();
-        }
-
-        //金額字串轉數值
-        public int ChangeInteger(String price)
-        {
-            int integer = 0;
-            const int TEN = 10;
-            const Char ZERO = '0';
-            for (int i = 0; i < price.Length; i++)
+            bool repeat = false;
+            Meal meal = GetSelectedMeal();
+            for (int i = 0; i < _ordersList.Count; i++)
             {
-                if (char.IsDigit(price[i]))
-                    integer = integer * TEN + (price[i] - ZERO);
-                else
+                if (meal.Name == _ordersList[i].Name)
+                {
+                    _ordersList[i].AddQuantity();
+                    repeat = true;
                     break;
+                }
             }
-            return integer;
+            if (!repeat)
+                _ordersList.Add(new Order(meal.Name, meal.GetCategoryName(), meal.GetPrice(), 1, meal.GetPrice()));
         }
 
-        //扣除金額
-        public String SubtractPrice(String price)
+        //刪除點餐
+        public void DeleteOrder(int position)
         {
-            int subtract = ChangeInteger(price) * (-1);
-            return GetTotalPrice(subtract);
+            _ordersList.RemoveAt(position);
+            JudgeDeleteMealEnable(position);
+        }
+
+        //因菜單改變而更新訂單
+        public void RefreshOrder(Meal oldMeal, Meal meal)
+        {
+            for (int i = 0; i < _ordersList.Count; i++)
+            {
+                if (_ordersList[i].Name == oldMeal.Name)
+                    _ordersList[i].ResetData(meal); 
+            }
+        }
+
+        //因類別改變而更新訂單
+        public void RefreshOrder(Category oldCategory, Category category)
+        {
+            for (int i = 0; i < _ordersList.Count; i++)
+            {
+                if (_ordersList[i].Category == oldCategory.Name)
+                    _ordersList[i].ResetData(category);
+            }
+        }
+
+        //清空點餐
+        public void ClearOrders()
+        {
+            _ordersList.Clear();
+        }
+
+        //修改餐點
+        public void EditMeal(Meal meal, int index)
+        {
+            Category category = _mealsList[index].GetCategory();
+            if (meal.IsSameCategory(_mealsList[index]))
+                category.EditMeal(meal, _mealsList[index].Name);
+            else
+            {
+                category.GetMeals().Remove(_mealsList[index]);
+                meal.GetCategory().AddMeal(meal);
+            }
+            RefreshOrder(_mealsList[index], meal);
+            _mealsList[index] = meal;
+            NotifyObserver();
+        }
+
+        //新增餐點
+        public void AddMeal(Meal meal)
+        {
+            Category category = meal.GetCategory();
+            category.AddMeal(meal);
+            _mealsList.Add(meal);
+            _deleteMealEnable = true;
+            NotifyPropertyChanged(DELETE_MEAL_ENABLE);
+            NotifyObserver();
+        }
+
+        //刪除餐點
+        public void DeleteMeal(int index)
+        {
+            Meal meal = _mealsList[index];
+            Category category = meal.GetCategory();
+            category.GetMeals().Remove(meal);
+            _mealsList.Remove(meal);
+            _deleteMealEnable = false;
+            NotifyPropertyChanged(DELETE_MEAL_ENABLE);
+            NotifyObserver();
+        }
+
+        //更新使用目前類別的餐點列表
+        public void RefreshUsedList(int index)
+        {
+            _mealsUsingThisCategoryList.Clear();
+            for (int i = 0; i < _categoriesList[index].GetMeals().Count; i++)
+            {
+                _mealsUsingThisCategoryList.Add(_categoriesList[index].GetMeals()[i]);
+            }
+        }
+
+        //清除使用目前類別的餐點列表
+        public void ClearUsedList()
+        {
+            _mealsUsingThisCategoryList.Clear();
+        }
+
+        //修改類別
+        public void EditCategory(Category category, int index)
+        {
+            RefreshOrder(_categoriesList[index], category);
+            _categoriesList[index].Name = category.Name;
+            NotifyObserver();
+        }
+
+        //新增類別
+        public void AddCategory(Category category)
+        {
+            _categoriesList.Add(category);
+            NotifyObserver();
+        }
+
+        //刪除類別
+        public void DeleteCategory(int index)
+        {
+            _categoriesList.RemoveAt(index);
+            NotifyObserver();
+        }
+
+        //通知數值變化
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        //通知View變化
+        public void NotifyObserver()
+        {
+            if (ModelChanged != null)
+                ModelChanged.Invoke();
         }
     }
 }

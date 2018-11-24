@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework", "Homework\Homework.csproj", "{AE7019C8-1219-4898-ABDF-69E021845A82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewNumericUpDownElements", "Homework\DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.csproj", "{82B50731-BE90-433F-BB6E-9B509C5F3B7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AE7019C8-1219-4898-ABDF-69E021845A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE7019C8-1219-4898-ABDF-69E021845A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE7019C8-1219-4898-ABDF-69E021845A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

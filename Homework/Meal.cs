@@ -1,25 +1,45 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Homework
 {
-    class Meal
+    public class Meal : INotifyPropertyChanged
     {
-        private String _name;
+        public event PropertyChangedEventHandler PropertyChanged;
+        private string _name;
+        private Category _category;
         private int _price;
-        private String _imageRelativePath;
-        private String _describe;
-        public Meal(String name, int price, String imageRelativePath, String describe)
+        private string _imageRelativePath;
+        private string _describe;
+        const string NAME = "Name";
+        public Meal(string name, Category category, int price, string imageRelativePath, string describe)
         {
             _name = name;
+            _category = category;
             _price = price;
             _imageRelativePath = imageRelativePath;
             _describe = describe;
         }
 
-        //取得餐點名稱
-        public String GetName()
+        //名子
+        public string Name
         {
-            return _name;
+            get
+            {
+                return _name;
+            }
+        }
+
+        //取得餐點類別
+        public Category GetCategory()
+        {
+            return _category;
+        }
+
+        //取得餐點類別名稱
+        public string GetCategoryName()
+        {
+            return _category.Name;
         }
 
         //取得餐點價格
@@ -29,15 +49,31 @@ namespace Homework
         }
 
         //取得圖檔相對位子
-        public String GetImageRelativePath()
+        public string GetImageRelativePath()
         {
             return _imageRelativePath;
         }
 
         //取得餐點描述
-        public String GetDescribe()
+        public string GetDescribe()
         {
             return _describe;
+        }
+
+        //判斷是不是同個類別
+        public bool IsSameCategory(Meal meal)
+        {
+            if (_category == meal.GetCategory())
+                return true;
+            else
+                return false;
+        }
+
+        //通知數值變化
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

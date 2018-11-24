@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
@@ -8,116 +9,153 @@ namespace Homework
 {
     public partial class POSCustomerSideForm : Form
     {
-        private CustomerFormPresentationModel _customerFormPresentationModel = new CustomerFormPresentationModel();
-        private Model _model;
-        private List<Button> _buttonList = new List<Button>();
-        private String _projectPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-        const String END = "\r\n";
-        const String UNIT = "元";
+        private CustomerFormPresentationModel _customerFormPresentationModel;
+        private List<List<Button>> _buttonsList = new List<List<Button>>();
+        const string END = "\r\n";
+        const string ENABLE = "Enabled";
+        const string TEXT = "Text";
         const int BUTTONS = 9;
         const int ROW = 3;
         const int COLUMN = 3;
-        public POSCustomerSideForm()
+        public POSCustomerSideForm(Model model)
         {
             InitializeComponent();
-            _model = _customerFormPresentationModel.GetModel();
-            _model.CreateInitialMeals();
-            _pageLabel.Text = _model.GetPageInformation();
-            CreateButton();
+            _customerFormPresentationModel = new CustomerFormPresentationModel(model);
+            _customerFormPresentationModel.GetModel().ModelChanged += UpdateView;
+            _customerFormPresentationModel.GetModel().NotifyObserver();
+            _nextButton.DataBindings.Add(ENABLE, _customerFormPresentationModel, "NextEnable");
+            _previousButton.DataBindings.Add(ENABLE, _customerFormPresentationModel, "PreviousEnable");
+            _addButton.DataBindings.Add(ENABLE, _customerFormPresentationModel, "AddEnable");
+            _checkDataGridView.DataSource = _customerFormPresentationModel.GetModel().OrdersList;
+            _pageLabel.Text = _customerFormPresentationModel.GetModel().GetComputeModel().GetPageInformation();
         }
 
-        //創建按鈕
-        private void CreateButton()
+        //創建對應tabpage的按鈕列表
+        private List<Button> CreateButtonList(TabPage tabPage)
         {
-            int[] buttonLocationX = new int[] { 6, 100, 193 };
-            int[] buttonLocationY = new int[] { 21, 106, 191 };
+            List<Button> buttons = new List<Button>();
+            int[] buttonLocationX = new int[] { 4, 99, 194 };
+            int[] buttonLocationY = new int[] { 5, 90, 175 };
             for (int i = 0; i < BUTTONS; i++)
             {
-                Button button = new Button();
-                Meal meal = _model.GetMealList()[i];
-                button.Text = meal.GetName() + END + meal.GetPrice() + UNIT;
-                button.Font = new Font("Microsoft JhengHei", 9F);
-                button.TextAlign = ContentAlignment.BottomLeft;
-                button.BackgroundImage = Image.FromFile(_projectPath + meal.GetImageRelativePath());
-                button.Size = new Size(90, 81);
+                Button button = CreateButton();
                 button.Location = new Point(buttonLocationX[i % COLUMN], buttonLocationY[i / ROW]);
-                button.TabIndex = i;
-                button.Click += ClickMenuButton;
-                _buttonList.Add(button);
-                _mealGroupBox.Controls.Add(button);
+                buttons.Add(button);
+                tabPage.Controls.Add(button);
             }
+            return buttons;
         }
 
-        //重設按鈕狀態
-        private void RefreshWidgetState()
+        //建立基礎按鈕
+        private Button CreateButton()
         {
-            _nextButton.Enabled = _customerFormPresentationModel.IsNextEnable();
-            _previousButton.Enabled = _customerFormPresentationModel.IsPreviousEnable();
-            _addButton.Enabled = _customerFormPresentationModel.IsAddEnable();
+            Button button = new Button()
+            { 
+                Font = new Font("Microsoft JhengHei", 9F),
+                TextAlign = ContentAlignment.BottomLeft,
+                Size = new Size(90, 81) };
+            button.Click += ClickMenuButton;
+            return button;
         }
 
         //餐點按鈕被觸發
         private void ClickMenuButton(object sender, EventArgs e)
         {
-            _model.SelectMeal(((Button)(sender)).TabIndex);
-            _describeBox.Text = _model.GetSelectedMeal().GetDescribe();
-            _customerFormPresentationModel.PrepareAdd();
-            RefreshWidgetState();
+            _customerFormPresentationModel.ChangeMeal(((Button)(sender)).TabIndex);
+            _descriptionBox.Text = _customerFormPresentationModel.GetDescriptionText();
         }
 
         //加點按鈕被觸發
         private void ClickAddButton(object sender, EventArgs e)
         {
-            DataGridViewRowCollection rows = _checkDataGridView.Rows;
-            Meal meal = _model.GetSelectedMeal();
-            String mealName;
-            int mealPrice;
-            mealName = meal.GetName();
-            mealPrice = meal.GetPrice();
-            rows.Add(new Object[] { null, mealName, mealPrice.ToString() + UNIT });
-            _totalPriceLabel.Text = _model.GetTotalPrice(mealPrice);
-            _customerFormPresentationModel.ResetAdd();
-            RefreshWidgetState();
+            _customerFormPresentationModel.AddMeal();
+            BindingManager.Position = BindingManager.Count - 1;
         }
 
         //換頁按鈕被觸發
         private void ClickChangedPageButton(object sender, EventArgs e)
         {
-            _model.ChangePage(((Button)(sender)).TabIndex);
-            _pageLabel.Text = _model.GetPageInformation();
-            _customerFormPresentationModel.ResetAdd();
-            _customerFormPresentationModel.TurnPage();
-            ResetMealButton();
-            RefreshWidgetState();
-        }
-
-        //重設菜單按鈕資料
-        private void ResetMealButton()
-        {
-            for (int i = 0; i < BUTTONS; i++)
-            {
-                try
-                {
-                    Meal meal = _model.GetMeal(i);
-                    _buttonList[i].Text = meal.GetName() + END + meal.GetPrice() + UNIT;
-                    _buttonList[i].BackgroundImage = Image.FromFile(_projectPath + meal.GetImageRelativePath());
-                    _buttonList[i].Visible = true;
-                }
-                catch
-                {
-                    _buttonList[i].Visible = false;
-                }
-            }
+            _customerFormPresentationModel.TurnPage(((Button)(sender)).TabIndex);
+            ResetMealButton(_tabControl.SelectedIndex);
+            _pageLabel.Text = _customerFormPresentationModel.GetModel().GetComputeModel().GetPageInformation();
         }
 
         //點擊刪除資料
         private void ClickDelete(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1 && e.ColumnIndex == 0)
+                _customerFormPresentationModel.GetModel().DeleteOrder(BindingManager.Position);
+        }
+
+        //餐點類別轉換
+        private void ChangeTabPage(object sender, EventArgs e)
+        {
+            _customerFormPresentationModel.ChangeCategory(_tabControl.SelectedIndex);
+            ResetMealButton(_tabControl.SelectedIndex);
+            _pageLabel.Text = _customerFormPresentationModel.GetModel().GetComputeModel().GetPageInformation();
+        }
+
+        //重設tabpage
+        private void ResetTabPage(BindingList<Category> categoriesList)
+        {
+            _tabControl.Controls.Clear();
+            _buttonsList.Clear();
+            for (int i = 0; i < categoriesList.Count; i++)
             {
-                String price = _checkDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-                _totalPriceLabel.Text = _model.SubtractPrice(price);
-                _checkDataGridView.Rows.RemoveAt(e.RowIndex);
+                TabPage tabPage = new TabPage()
+                { 
+                    Text = categoriesList[i].Name };
+                _tabControl.Controls.Add(tabPage);
+                _buttonsList.Add(CreateButtonList(tabPage));
+                ResetMealButton(_tabControl.SelectedIndex);
+            }
+        }
+
+        //重設菜單按鈕資料
+        private void ResetMealButton(int index)
+        {
+            if (index >= 0)
+            {
+                string projectPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                _customerFormPresentationModel.RefreshButtonInformation(index);
+                List<string> buttonPresentationText = _customerFormPresentationModel.GetButtonPresentationText();
+                List<string> buttonPresentationImagePath = _customerFormPresentationModel.GetButtonPresentationImagePath();
+                List<bool> buttonVisible = _customerFormPresentationModel.GetButtonVisible();
+                for (int i = 0; i < BUTTONS && i < _buttonsList[index].Count; i++)
+                {
+                    _buttonsList[index][i].Text = buttonPresentationText[i];
+                    _buttonsList[index][i].BackgroundImage = Image.FromFile(projectPath + buttonPresentationImagePath[i]);
+                    _buttonsList[index][i].Visible = buttonVisible[i];
+                }
+            }
+        }
+
+        //刷新總價
+        private void RefreshTotalPrice(object sender, EventArgs e)
+        {
+            _totalPriceLabel.Text = _customerFormPresentationModel.GetModel().GetTotalPriceInformation();
+        }
+
+        //更新畫面
+        private void UpdateView()
+        {
+            BindingList<Category> categoriesList = _customerFormPresentationModel.GetModel().CategoriesList;
+            if (categoriesList.Count != _tabControl.Controls.Count)
+                ResetTabPage(categoriesList);
+            else
+                ResetMealButton(_tabControl.SelectedIndex);
+            _customerFormPresentationModel.ClearMeal();
+            _descriptionBox.Text = _customerFormPresentationModel.GetDescriptionText();
+            _customerFormPresentationModel.ChangeCategory(_tabControl.SelectedIndex);
+            _pageLabel.Text = _customerFormPresentationModel.GetModel().GetComputeModel().GetPageInformation();
+        }
+
+        //資料連結管理
+        private BindingManagerBase BindingManager
+        {
+            get
+            {
+                return BindingContext[_customerFormPresentationModel.GetModel().OrdersList];
             }
         }
     }
