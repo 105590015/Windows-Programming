@@ -39,14 +39,14 @@
             this._pageLabel = new System.Windows.Forms.Label();
             this._totalPriceLabel = new System.Windows.Forms.Label();
             this._checkDataGridView = new System.Windows.Forms.DataGridView();
-            this._orderListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._orderListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._quantityDataGridViewTextBoxColumn = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
             this._subtotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._mealGroupBox.SuspendLayout();
             this._descriptionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._checkDataGridView)).BeginInit();
@@ -80,6 +80,7 @@
             // 
             // _descriptionPanel
             // 
+            this._descriptionPanel.AccessibleName = "";
             this._descriptionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._descriptionPanel.Controls.Add(this._descriptionBox);
             this._descriptionPanel.Location = new System.Drawing.Point(6, 377);
@@ -89,6 +90,8 @@
             // 
             // _descriptionBox
             // 
+            this._descriptionBox.AccessibleDescription = "";
+            this._descriptionBox.AccessibleName = "_descriptionBox";
             this._descriptionBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._descriptionBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this._descriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -155,7 +158,8 @@
             // 
             // _checkDataGridView
             // 
-            this._checkDataGridView.AccessibleName = "";
+            this._checkDataGridView.AccessibleDescription = "";
+            this._checkDataGridView.AccessibleName = "_checkDataGridView";
             this._checkDataGridView.AllowUserToAddRows = false;
             this._checkDataGridView.AllowUserToResizeColumns = false;
             this._checkDataGridView.AllowUserToResizeRows = false;
@@ -179,15 +183,6 @@
             this._checkDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDelete);
             this._checkDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.RefreshTotalPrice);
             // 
-            // _orderListBindingSource
-            // 
-            this._orderListBindingSource.DataMember = "OrdersList";
-            this._orderListBindingSource.DataSource = this._modelBindingSource;
-            // 
-            // _modelBindingSource
-            // 
-            this._modelBindingSource.DataSource = typeof(Homework.Model);
-            // 
             // _deleteColumn
             // 
             this._deleteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -196,6 +191,11 @@
             this._deleteColumn.Name = "_deleteColumn";
             this._deleteColumn.Text = "X";
             this._deleteColumn.UseColumnTextForButtonValue = true;
+            // 
+            // _orderListBindingSource
+            // 
+            this._orderListBindingSource.DataMember = "OrdersList";
+            this._orderListBindingSource.DataSource = this._modelBindingSource;
             // 
             // _nameDataGridViewTextBoxColumn
             // 
@@ -243,6 +243,10 @@
             this._subtotalDataGridViewTextBoxColumn.HeaderText = "Subtotal";
             this._subtotalDataGridViewTextBoxColumn.Name = "_subtotalDataGridViewTextBoxColumn";
             this._subtotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // _modelBindingSource
+            // 
+            this._modelBindingSource.DataSource = typeof(Homework.Model);
             // 
             // POSCustomerSideForm
             // 
