@@ -175,7 +175,7 @@ namespace Homework
             _mealListBox.ClearSelected();
             _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetSelectedMealOfRestaurant(-1);
             _restaurantFormMealPresentationModel.GetModel().GetComputeModel().SetDeleteMealEnable(false);
-            ResetSelectedMeal();
+            _categoryComboBox.SelectedIndex = 0;
             _restaurantFormMealPresentationModel.ClearMealData();
             _mealNameTextBox.Text = _restaurantFormMealPresentationModel.GetMealName();
             _mealPriceTextBox.Text = _restaurantFormMealPresentationModel.GetMealPrice();
@@ -187,18 +187,6 @@ namespace Homework
             _restaurantFormCategoryPresentationModel.GetModel().GetComputeModel().SetDeleteCategoryEnable(false);
             _restaurantFormCategoryPresentationModel.ClearCategoryData();
             _categoryNameTextBox.Text = _restaurantFormCategoryPresentationModel.GetCategoryName();
-        }
-
-        //重設選擇的餐點
-        public void ResetSelectedMeal()
-        {
-            try
-            {
-                _categoryComboBox.SelectedIndex = 0;
-            }
-            catch
-            {
-            }
         }
 
         //餐點資料連結管理

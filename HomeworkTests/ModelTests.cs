@@ -26,15 +26,6 @@ namespace Homework.Tests
             Assert.AreEqual("Page：1 / 2", model.GetComputeModel().GetPageInformation());
         }
 
-        //取得第index項餐點資料測試
-        [TestMethod()]
-        public void GetMealTest()
-        {
-            Model model = new Model();
-            Assert.AreEqual(model.MealsList[0], model.GetMeal(0));
-            Assert.AreEqual(model.MealsList[26], model.GetMeal(26));
-        }
-
         //儲存與取得被點擊的餐點測試
         [TestMethod()]
         public void SelectMealAndGetSelectedMealTest()

@@ -144,7 +144,8 @@ namespace Homework
                 ResetTabPage(categoriesList);
             else
             {
-                ((TabPage)(_tabControl.Controls[_tabControl.SelectedIndex])).Text = categoriesList[_tabControl.SelectedIndex].Name;
+                for(int i = 0; i < _tabControl.Controls.Count; i++)
+                    ((TabPage)(_tabControl.Controls[i])).Text = categoriesList[i].Name;
                 ResetMealButton(_tabControl.SelectedIndex);
             }
             _customerFormPresentationModel.ClearMeal();

@@ -73,19 +73,5 @@ namespace Homework.Tests
             Assert.AreEqual(false, meal1.IsSameCategory(meal2));
             Assert.AreEqual(true, meal1.IsSameCategory(meal3));
         }
-
-        //通知數值變化測試
-        [TestMethod()]
-        public void NotifyPropertyChangedTest()
-        {
-            Meal meal = new Meal("Test", new Category("Category"), 70, "Path", "Description");
-            List<string> nameOfPropertyChanged = new List<string>();
-            meal.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-            {
-                nameOfPropertyChanged.Add(e.PropertyName);
-            };
-            meal.NotifyPropertyChanged("Name");
-            Assert.AreEqual("Name", nameOfPropertyChanged[0]);
-        }
     }
 }

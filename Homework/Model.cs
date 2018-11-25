@@ -126,12 +126,6 @@ namespace Homework
             }
         }
 
-        //取得第index項餐點資料
-        public Meal GetMeal(int index)
-        {
-            return _mealsList[_computeModel.GetPage() * BUTTONS + index];
-        }
-
         //儲存被點擊的餐點
         public void SelectMeal(int whichButton)
         {

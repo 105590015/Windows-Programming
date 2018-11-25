@@ -68,12 +68,5 @@ namespace Homework
             else
                 return false;
         }
-
-        //通知數值變化
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

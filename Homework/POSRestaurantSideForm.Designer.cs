@@ -31,32 +31,32 @@
             this._tabControl = new System.Windows.Forms.TabControl();
             this._manageMealTabPage = new System.Windows.Forms.TabPage();
             this._mealDetailGroupBox = new System.Windows.Forms.GroupBox();
+            this._enterMealButton = new System.Windows.Forms.Button();
+            this._mealDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this._mealDescriptionLabel = new System.Windows.Forms.Label();
+            this._browseButton = new System.Windows.Forms.Button();
+            this._imagePathTextBox = new System.Windows.Forms.TextBox();
+            this._imagePathLabel = new System.Windows.Forms.Label();
+            this._categoryComboBox = new System.Windows.Forms.ComboBox();
+            this._mealCategoryLabel = new System.Windows.Forms.Label();
+            this._unitLabel = new System.Windows.Forms.Label();
+            this._mealPriceTextBox = new System.Windows.Forms.TextBox();
+            this._mealPriceLabel = new System.Windows.Forms.Label();
+            this._mealNameTextBox = new System.Windows.Forms.TextBox();
             this._mealNameLabel = new System.Windows.Forms.Label();
             this._deleteMealButton = new System.Windows.Forms.Button();
             this._addMealButton = new System.Windows.Forms.Button();
             this._mealListBox = new System.Windows.Forms.ListBox();
             this._manageCategoryTabPage = new System.Windows.Forms.TabPage();
-            this._mealNameTextBox = new System.Windows.Forms.TextBox();
-            this._mealPriceLabel = new System.Windows.Forms.Label();
-            this._mealPriceTextBox = new System.Windows.Forms.TextBox();
-            this._unitLabel = new System.Windows.Forms.Label();
-            this._mealCategoryLabel = new System.Windows.Forms.Label();
-            this._categoryComboBox = new System.Windows.Forms.ComboBox();
-            this._imagePathLabel = new System.Windows.Forms.Label();
-            this._imagePathTextBox = new System.Windows.Forms.TextBox();
-            this._browseButton = new System.Windows.Forms.Button();
-            this._mealDescriptionLabel = new System.Windows.Forms.Label();
-            this._mealDescriptionTextBox = new System.Windows.Forms.TextBox();
-            this._enterMealButton = new System.Windows.Forms.Button();
-            this._categoryListBox = new System.Windows.Forms.ListBox();
-            this._addCategoryButton = new System.Windows.Forms.Button();
-            this._deleteCategoryButton = new System.Windows.Forms.Button();
             this._categoryDetailGroupBox = new System.Windows.Forms.GroupBox();
-            this._categoryNameLabel = new System.Windows.Forms.Label();
-            this._categoryNameTextBox = new System.Windows.Forms.TextBox();
-            this._mealUsingThisCategoryLabel = new System.Windows.Forms.Label();
-            this._mealUsingThisCategoryList = new System.Windows.Forms.ListBox();
             this._enterCategoryButton = new System.Windows.Forms.Button();
+            this._mealUsingThisCategoryList = new System.Windows.Forms.ListBox();
+            this._mealUsingThisCategoryLabel = new System.Windows.Forms.Label();
+            this._categoryNameTextBox = new System.Windows.Forms.TextBox();
+            this._categoryNameLabel = new System.Windows.Forms.Label();
+            this._deleteCategoryButton = new System.Windows.Forms.Button();
+            this._addCategoryButton = new System.Windows.Forms.Button();
+            this._categoryListBox = new System.Windows.Forms.ListBox();
             this._tabControl.SuspendLayout();
             this._manageMealTabPage.SuspendLayout();
             this._mealDetailGroupBox.SuspendLayout();
@@ -68,12 +68,13 @@
             // 
             this._tabControl.Controls.Add(this._manageMealTabPage);
             this._tabControl.Controls.Add(this._manageCategoryTabPage);
-            this._tabControl.Location = new System.Drawing.Point(12, 12);
+            this._tabControl.Location = new System.Drawing.Point(9, 10);
+            this._tabControl.Margin = new System.Windows.Forms.Padding(2);
             this._tabControl.Name = "_tabControl";
             this._tabControl.SelectedIndex = 0;
-            this._tabControl.Size = new System.Drawing.Size(908, 429);
+            this._tabControl.Size = new System.Drawing.Size(681, 349);
             this._tabControl.TabIndex = 0;
-            this._tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(ChangeTabPage);
+            this._tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.ChangeTabPage);
             // 
             // _manageMealTabPage
             // 
@@ -81,10 +82,11 @@
             this._manageMealTabPage.Controls.Add(this._deleteMealButton);
             this._manageMealTabPage.Controls.Add(this._addMealButton);
             this._manageMealTabPage.Controls.Add(this._mealListBox);
-            this._manageMealTabPage.Location = new System.Drawing.Point(4, 25);
+            this._manageMealTabPage.Location = new System.Drawing.Point(4, 22);
+            this._manageMealTabPage.Margin = new System.Windows.Forms.Padding(2);
             this._manageMealTabPage.Name = "_manageMealTabPage";
-            this._manageMealTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this._manageMealTabPage.Size = new System.Drawing.Size(900, 400);
+            this._manageMealTabPage.Padding = new System.Windows.Forms.Padding(2);
+            this._manageMealTabPage.Size = new System.Drawing.Size(673, 323);
             this._manageMealTabPage.TabIndex = 0;
             this._manageMealTabPage.Text = "Meal Manager";
             this._manageMealTabPage.UseVisualStyleBackColor = true;
@@ -104,38 +106,174 @@
             this._mealDetailGroupBox.Controls.Add(this._mealPriceLabel);
             this._mealDetailGroupBox.Controls.Add(this._mealNameTextBox);
             this._mealDetailGroupBox.Controls.Add(this._mealNameLabel);
-            this._mealDetailGroupBox.Location = new System.Drawing.Point(360, 7);
+            this._mealDetailGroupBox.Location = new System.Drawing.Point(270, 6);
+            this._mealDetailGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this._mealDetailGroupBox.Name = "_mealDetailGroupBox";
-            this._mealDetailGroupBox.Size = new System.Drawing.Size(534, 387);
+            this._mealDetailGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this._mealDetailGroupBox.Size = new System.Drawing.Size(400, 314);
             this._mealDetailGroupBox.TabIndex = 3;
             this._mealDetailGroupBox.TabStop = false;
             this._mealDetailGroupBox.Text = "groupBox1";
             // 
+            // _enterMealButton
+            // 
+            this._enterMealButton.Location = new System.Drawing.Point(340, 285);
+            this._enterMealButton.Margin = new System.Windows.Forms.Padding(2);
+            this._enterMealButton.Name = "_enterMealButton";
+            this._enterMealButton.Size = new System.Drawing.Size(56, 24);
+            this._enterMealButton.TabIndex = 12;
+            this._enterMealButton.Text = "button1";
+            this._enterMealButton.UseVisualStyleBackColor = true;
+            this._enterMealButton.Click += new System.EventHandler(this.EnterMeal);
+            // 
+            // _mealDescriptionTextBox
+            // 
+            this._mealDescriptionTextBox.AccessibleName = "_mealDescriptionTextBox";
+            this._mealDescriptionTextBox.Enabled = false;
+            this._mealDescriptionTextBox.Location = new System.Drawing.Point(4, 141);
+            this._mealDescriptionTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this._mealDescriptionTextBox.Multiline = true;
+            this._mealDescriptionTextBox.Name = "_mealDescriptionTextBox";
+            this._mealDescriptionTextBox.Size = new System.Drawing.Size(392, 135);
+            this._mealDescriptionTextBox.TabIndex = 11;
+            this._mealDescriptionTextBox.TextChanged += new System.EventHandler(this.JudgeModifyMealData);
+            // 
+            // _mealDescriptionLabel
+            // 
+            this._mealDescriptionLabel.AutoSize = true;
+            this._mealDescriptionLabel.Location = new System.Drawing.Point(4, 125);
+            this._mealDescriptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._mealDescriptionLabel.Name = "_mealDescriptionLabel";
+            this._mealDescriptionLabel.Size = new System.Drawing.Size(86, 13);
+            this._mealDescriptionLabel.TabIndex = 10;
+            this._mealDescriptionLabel.Text = "Meal Description";
+            // 
+            // _browseButton
+            // 
+            this._browseButton.Enabled = false;
+            this._browseButton.Location = new System.Drawing.Point(340, 87);
+            this._browseButton.Margin = new System.Windows.Forms.Padding(2);
+            this._browseButton.Name = "_browseButton";
+            this._browseButton.Size = new System.Drawing.Size(56, 24);
+            this._browseButton.TabIndex = 9;
+            this._browseButton.Text = "Browse";
+            this._browseButton.UseVisualStyleBackColor = true;
+            this._browseButton.Click += new System.EventHandler(this.BrowsePath);
+            // 
+            // _imagePathTextBox
+            // 
+            this._imagePathTextBox.AccessibleName = "_imagePathTextBox";
+            this._imagePathTextBox.Enabled = false;
+            this._imagePathTextBox.Location = new System.Drawing.Point(149, 90);
+            this._imagePathTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this._imagePathTextBox.Name = "_imagePathTextBox";
+            this._imagePathTextBox.Size = new System.Drawing.Size(187, 20);
+            this._imagePathTextBox.TabIndex = 8;
+            this._imagePathTextBox.TextChanged += new System.EventHandler(this.JudgeModifyMealData);
+            // 
+            // _imagePathLabel
+            // 
+            this._imagePathLabel.AutoSize = true;
+            this._imagePathLabel.Location = new System.Drawing.Point(4, 93);
+            this._imagePathLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._imagePathLabel.Name = "_imagePathLabel";
+            this._imagePathLabel.Size = new System.Drawing.Size(142, 13);
+            this._imagePathLabel.TabIndex = 7;
+            this._imagePathLabel.Text = "Meal Image Relative Path (*)";
+            // 
+            // _categoryComboBox
+            // 
+            this._categoryComboBox.AccessibleName = "_categoryComboBox";
+            this._categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._categoryComboBox.Enabled = false;
+            this._categoryComboBox.FormattingEnabled = true;
+            this._categoryComboBox.Location = new System.Drawing.Point(305, 58);
+            this._categoryComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this._categoryComboBox.Name = "_categoryComboBox";
+            this._categoryComboBox.Size = new System.Drawing.Size(92, 21);
+            this._categoryComboBox.TabIndex = 6;
+            this._categoryComboBox.TextChanged += new System.EventHandler(this.JudgeModifyMealData);
+            // 
+            // _mealCategoryLabel
+            // 
+            this._mealCategoryLabel.AutoSize = true;
+            this._mealCategoryLabel.Location = new System.Drawing.Point(212, 60);
+            this._mealCategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._mealCategoryLabel.Name = "_mealCategoryLabel";
+            this._mealCategoryLabel.Size = new System.Drawing.Size(88, 13);
+            this._mealCategoryLabel.TabIndex = 5;
+            this._mealCategoryLabel.Text = "Meal Category (*)";
+            // 
+            // _unitLabel
+            // 
+            this._unitLabel.AutoSize = true;
+            this._unitLabel.Location = new System.Drawing.Point(181, 60);
+            this._unitLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._unitLabel.Name = "_unitLabel";
+            this._unitLabel.Size = new System.Drawing.Size(19, 13);
+            this._unitLabel.TabIndex = 4;
+            this._unitLabel.Text = "元";
+            // 
+            // _mealPriceTextBox
+            // 
+            this._mealPriceTextBox.AccessibleName = "_mealPriceTextBox";
+            this._mealPriceTextBox.Enabled = false;
+            this._mealPriceTextBox.Location = new System.Drawing.Point(79, 58);
+            this._mealPriceTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this._mealPriceTextBox.Name = "_mealPriceTextBox";
+            this._mealPriceTextBox.Size = new System.Drawing.Size(98, 20);
+            this._mealPriceTextBox.TabIndex = 3;
+            this._mealPriceTextBox.TextChanged += new System.EventHandler(this.JudgeModifyMealData);
+            // 
+            // _mealPriceLabel
+            // 
+            this._mealPriceLabel.AutoSize = true;
+            this._mealPriceLabel.Location = new System.Drawing.Point(4, 60);
+            this._mealPriceLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._mealPriceLabel.Name = "_mealPriceLabel";
+            this._mealPriceLabel.Size = new System.Drawing.Size(70, 13);
+            this._mealPriceLabel.TabIndex = 2;
+            this._mealPriceLabel.Text = "Meal Price (*)";
+            // 
+            // _mealNameTextBox
+            // 
+            this._mealNameTextBox.AccessibleName = "_mealNameTextBox";
+            this._mealNameTextBox.Enabled = false;
+            this._mealNameTextBox.Location = new System.Drawing.Point(82, 25);
+            this._mealNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this._mealNameTextBox.Name = "_mealNameTextBox";
+            this._mealNameTextBox.Size = new System.Drawing.Size(314, 20);
+            this._mealNameTextBox.TabIndex = 1;
+            this._mealNameTextBox.TextChanged += new System.EventHandler(this.JudgeModifyMealData);
+            // 
             // _mealNameLabel
             // 
             this._mealNameLabel.AutoSize = true;
-            this._mealNameLabel.Location = new System.Drawing.Point(6, 34);
+            this._mealNameLabel.Location = new System.Drawing.Point(4, 28);
+            this._mealNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this._mealNameLabel.Name = "_mealNameLabel";
-            this._mealNameLabel.Size = new System.Drawing.Size(98, 17);
+            this._mealNameLabel.Size = new System.Drawing.Size(74, 13);
             this._mealNameLabel.TabIndex = 0;
             this._mealNameLabel.Text = "Meal Name (*)";
             // 
             // _deleteMealButton
             // 
             this._deleteMealButton.Enabled = false;
-            this._deleteMealButton.Location = new System.Drawing.Point(194, 364);
-            this._deleteMealButton.Name = "_DeleteMealButton";
-            this._deleteMealButton.Size = new System.Drawing.Size(160, 30);
+            this._deleteMealButton.Location = new System.Drawing.Point(146, 296);
+            this._deleteMealButton.Margin = new System.Windows.Forms.Padding(2);
+            this._deleteMealButton.Name = "_deleteMealButton";
+            this._deleteMealButton.Size = new System.Drawing.Size(120, 24);
             this._deleteMealButton.TabIndex = 2;
             this._deleteMealButton.Text = "Delete Selected Meal";
             this._deleteMealButton.UseVisualStyleBackColor = true;
-            this._deleteMealButton.Click += new System.EventHandler(DeleteMeal);
+            this._deleteMealButton.Click += new System.EventHandler(this.DeleteMeal);
             // 
             // _addMealButton
             // 
-            this._addMealButton.Location = new System.Drawing.Point(6, 364);
-            this._addMealButton.Name = "_AddMealButton";
-            this._addMealButton.Size = new System.Drawing.Size(150, 30);
+            this._addMealButton.Location = new System.Drawing.Point(4, 296);
+            this._addMealButton.Margin = new System.Windows.Forms.Padding(2);
+            this._addMealButton.Name = "_addMealButton";
+            this._addMealButton.Size = new System.Drawing.Size(112, 24);
             this._addMealButton.TabIndex = 1;
             this._addMealButton.Text = "Add New Meal";
             this._addMealButton.UseVisualStyleBackColor = true;
@@ -143,11 +281,12 @@
             // 
             // _mealListBox
             // 
+            this._mealListBox.AccessibleName = "_mealListBox";
             this._mealListBox.FormattingEnabled = true;
-            this._mealListBox.ItemHeight = 16;
-            this._mealListBox.Location = new System.Drawing.Point(6, 6);
+            this._mealListBox.Location = new System.Drawing.Point(4, 5);
+            this._mealListBox.Margin = new System.Windows.Forms.Padding(2);
             this._mealListBox.Name = "_mealListBox";
-            this._mealListBox.Size = new System.Drawing.Size(347, 340);
+            this._mealListBox.Size = new System.Drawing.Size(261, 277);
             this._mealListBox.TabIndex = 0;
             this._mealListBox.Click += new System.EventHandler(this.ChangeEditMealMode);
             // 
@@ -157,158 +296,14 @@
             this._manageCategoryTabPage.Controls.Add(this._deleteCategoryButton);
             this._manageCategoryTabPage.Controls.Add(this._addCategoryButton);
             this._manageCategoryTabPage.Controls.Add(this._categoryListBox);
-            this._manageCategoryTabPage.Location = new System.Drawing.Point(4, 25);
+            this._manageCategoryTabPage.Location = new System.Drawing.Point(4, 22);
+            this._manageCategoryTabPage.Margin = new System.Windows.Forms.Padding(2);
             this._manageCategoryTabPage.Name = "_manageCategoryTabPage";
-            this._manageCategoryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this._manageCategoryTabPage.Size = new System.Drawing.Size(900, 400);
+            this._manageCategoryTabPage.Padding = new System.Windows.Forms.Padding(2);
+            this._manageCategoryTabPage.Size = new System.Drawing.Size(673, 323);
             this._manageCategoryTabPage.TabIndex = 1;
             this._manageCategoryTabPage.Text = "Category Manager";
             this._manageCategoryTabPage.UseVisualStyleBackColor = true;
-            // 
-            // _mealNameTextBox
-            // 
-            this._mealNameTextBox.Enabled = false;
-            this._mealNameTextBox.Location = new System.Drawing.Point(110, 31);
-            this._mealNameTextBox.Name = "_mealNameTextBox";
-            this._mealNameTextBox.Size = new System.Drawing.Size(418, 22);
-            this._mealNameTextBox.TabIndex = 1;
-            this._mealNameTextBox.TextChanged += new System.EventHandler(JudgeModifyMealData);
-            // 
-            // _mealPriceLabel
-            // 
-            this._mealPriceLabel.AutoSize = true;
-            this._mealPriceLabel.Location = new System.Drawing.Point(6, 74);
-            this._mealPriceLabel.Name = "_mealPriceLabel";
-            this._mealPriceLabel.Size = new System.Drawing.Size(93, 17);
-            this._mealPriceLabel.TabIndex = 2;
-            this._mealPriceLabel.Text = "Meal Price (*)";
-            // 
-            // _mealPriceTextBox
-            // 
-            this._mealPriceTextBox.Enabled = false;
-            this._mealPriceTextBox.Location = new System.Drawing.Point(105, 71);
-            this._mealPriceTextBox.Name = "_mealPriceTextBox";
-            this._mealPriceTextBox.Size = new System.Drawing.Size(130, 22);
-            this._mealPriceTextBox.TabIndex = 3;
-            this._mealPriceTextBox.TextChanged += new System.EventHandler(JudgeModifyMealData);
-            // 
-            // _unitLabel
-            // 
-            this._unitLabel.AutoSize = true;
-            this._unitLabel.Location = new System.Drawing.Point(241, 74);
-            this._unitLabel.Name = "_unitLabel";
-            this._unitLabel.Size = new System.Drawing.Size(22, 17);
-            this._unitLabel.TabIndex = 4;
-            this._unitLabel.Text = "元";
-            // 
-            // _mealCategoryLabel
-            // 
-            this._mealCategoryLabel.AutoSize = true;
-            this._mealCategoryLabel.Location = new System.Drawing.Point(283, 74);
-            this._mealCategoryLabel.Name = "_mealCategoryLabel";
-            this._mealCategoryLabel.Size = new System.Drawing.Size(118, 17);
-            this._mealCategoryLabel.TabIndex = 5;
-            this._mealCategoryLabel.Text = "Meal Category (*)";
-            // 
-            // _categoryComboBox
-            // 
-            this._categoryComboBox.Enabled = false;
-            this._categoryComboBox.FormattingEnabled = true;
-            this._categoryComboBox.Location = new System.Drawing.Point(407, 71);
-            this._categoryComboBox.Name = "_categoryComboBox";
-            this._categoryComboBox.Size = new System.Drawing.Size(121, 24);
-            this._categoryComboBox.TabIndex = 6;
-            this._categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._categoryComboBox.TextChanged += new System.EventHandler(JudgeModifyMealData);
-            // 
-            // _imagePathLabel
-            // 
-            this._imagePathLabel.AutoSize = true;
-            this._imagePathLabel.Location = new System.Drawing.Point(6, 114);
-            this._imagePathLabel.Name = "_imagePathLabel";
-            this._imagePathLabel.Size = new System.Drawing.Size(187, 17);
-            this._imagePathLabel.TabIndex = 7;
-            this._imagePathLabel.Text = "Meal Image Relative Path (*)";
-            // 
-            // _imagePathTextBox
-            // 
-            this._imagePathTextBox.Enabled = false;
-            this._imagePathTextBox.Location = new System.Drawing.Point(199, 111);
-            this._imagePathTextBox.Name = "_imagePathTextBox";
-            this._imagePathTextBox.Size = new System.Drawing.Size(248, 22);
-            this._imagePathTextBox.TabIndex = 8;
-            this._imagePathTextBox.TextChanged += new System.EventHandler(JudgeModifyMealData);
-            // 
-            // _browseButton
-            // 
-            this._browseButton.Enabled = false;
-            this._browseButton.Location = new System.Drawing.Point(453, 107);
-            this._browseButton.Name = "_browseButton";
-            this._browseButton.Size = new System.Drawing.Size(75, 30);
-            this._browseButton.TabIndex = 9;
-            this._browseButton.Text = "Browse";
-            this._browseButton.UseVisualStyleBackColor = true;
-            this._browseButton.Click += new System.EventHandler(BrowsePath);
-            // 
-            // _mealDescriptionLabel
-            // 
-            this._mealDescriptionLabel.AutoSize = true;
-            this._mealDescriptionLabel.Location = new System.Drawing.Point(6, 154);
-            this._mealDescriptionLabel.Name = "_mealDescriptionLabel";
-            this._mealDescriptionLabel.Size = new System.Drawing.Size(113, 17);
-            this._mealDescriptionLabel.TabIndex = 10;
-            this._mealDescriptionLabel.Text = "Meal Description";
-            // 
-            // _mealDescriptionTextBox
-            // 
-            this._mealDescriptionTextBox.Enabled = false;
-            this._mealDescriptionTextBox.Location = new System.Drawing.Point(6, 174);
-            this._mealDescriptionTextBox.Multiline = true;
-            this._mealDescriptionTextBox.Name = "_mealDescriptionTextBox";
-            this._mealDescriptionTextBox.Size = new System.Drawing.Size(522, 165);
-            this._mealDescriptionTextBox.TabIndex = 11;
-            this._mealDescriptionTextBox.TextChanged += new System.EventHandler(JudgeModifyMealData);
-            // 
-            // _enterMealButton
-            // 
-            this._enterMealButton.Location = new System.Drawing.Point(453, 351);
-            this._enterMealButton.Name = "_enterMealButton";
-            this._enterMealButton.Size = new System.Drawing.Size(75, 30);
-            this._enterMealButton.TabIndex = 12;
-            this._enterMealButton.Text = "button1";
-            this._enterMealButton.UseVisualStyleBackColor = true;
-            this._enterMealButton.Click += new System.EventHandler(EnterMeal);
-            // 
-            // _categoryListBox
-            // 
-            this._categoryListBox.FormattingEnabled = true;
-            this._categoryListBox.ItemHeight = 16;
-            this._categoryListBox.Location = new System.Drawing.Point(6, 6);
-            this._categoryListBox.Name = "_categoryListBox";
-            this._categoryListBox.Size = new System.Drawing.Size(347, 340);
-            this._categoryListBox.TabIndex = 0;
-            this._categoryListBox.Click += new System.EventHandler(ChangeEditCategoryMode);
-            // 
-            // _addCategoryButton
-            // 
-            this._addCategoryButton.Location = new System.Drawing.Point(6, 364);
-            this._addCategoryButton.Name = "_AddCategoryButton";
-            this._addCategoryButton.Size = new System.Drawing.Size(150, 30);
-            this._addCategoryButton.TabIndex = 2;
-            this._addCategoryButton.Text = "Add New Category";
-            this._addCategoryButton.UseVisualStyleBackColor = true;
-            this._addCategoryButton.Click += new System.EventHandler(ChangeAddCategoryMode);
-            // 
-            // _deleteCategoryButton
-            // 
-            this._deleteCategoryButton.Enabled = false;
-            this._deleteCategoryButton.Location = new System.Drawing.Point(169, 364);
-            this._deleteCategoryButton.Name = "_deleteCategoryButton";
-            this._deleteCategoryButton.Size = new System.Drawing.Size(185, 30);
-            this._deleteCategoryButton.TabIndex = 3;
-            this._deleteCategoryButton.Text = "Delete Selected Category";
-            this._deleteCategoryButton.UseVisualStyleBackColor = true;
-            this._deleteCategoryButton.Click += new System.EventHandler(DeleteCategory);
             // 
             // _categoryDetailGroupBox
             // 
@@ -317,65 +312,107 @@
             this._categoryDetailGroupBox.Controls.Add(this._mealUsingThisCategoryLabel);
             this._categoryDetailGroupBox.Controls.Add(this._categoryNameTextBox);
             this._categoryDetailGroupBox.Controls.Add(this._categoryNameLabel);
-            this._categoryDetailGroupBox.Location = new System.Drawing.Point(360, 7);
+            this._categoryDetailGroupBox.Location = new System.Drawing.Point(270, 6);
+            this._categoryDetailGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this._categoryDetailGroupBox.Name = "_categoryDetailGroupBox";
-            this._categoryDetailGroupBox.Size = new System.Drawing.Size(534, 387);
+            this._categoryDetailGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this._categoryDetailGroupBox.Size = new System.Drawing.Size(400, 314);
             this._categoryDetailGroupBox.TabIndex = 4;
             this._categoryDetailGroupBox.TabStop = false;
             this._categoryDetailGroupBox.Text = "groupBox1";
             // 
-            // _categoryNameLabel
+            // _enterCategoryButton
             // 
-            this._categoryNameLabel.AutoSize = true;
-            this._categoryNameLabel.Location = new System.Drawing.Point(6, 34);
-            this._categoryNameLabel.Name = "_categoryNameLabel";
-            this._categoryNameLabel.Size = new System.Drawing.Size(125, 17);
-            this._categoryNameLabel.TabIndex = 0;
-            this._categoryNameLabel.Text = "Category Name (*)";
-            // 
-            // _categoryNameTextBox
-            // 
-            this._categoryNameTextBox.Enabled = false;
-            this._categoryNameTextBox.Location = new System.Drawing.Point(137, 31);
-            this._categoryNameTextBox.Name = "_categoryNameTextBox";
-            this._categoryNameTextBox.Size = new System.Drawing.Size(391, 22);
-            this._categoryNameTextBox.TabIndex = 1;
-            this._categoryNameTextBox.TextChanged += new System.EventHandler(JudgeModifyCategoryData);
-            // 
-            // _mealUsingThisCategoryLabel
-            // 
-            this._mealUsingThisCategoryLabel.AutoSize = true;
-            this._mealUsingThisCategoryLabel.Location = new System.Drawing.Point(6, 74);
-            this._mealUsingThisCategoryLabel.Name = "_mealUsingThisCategoryLabel";
-            this._mealUsingThisCategoryLabel.Size = new System.Drawing.Size(182, 17);
-            this._mealUsingThisCategoryLabel.TabIndex = 2;
-            this._mealUsingThisCategoryLabel.Text = "Meal(s) Using this Category";
+            this._enterCategoryButton.Location = new System.Drawing.Point(340, 285);
+            this._enterCategoryButton.Margin = new System.Windows.Forms.Padding(2);
+            this._enterCategoryButton.Name = "_enterCategoryButton";
+            this._enterCategoryButton.Size = new System.Drawing.Size(56, 24);
+            this._enterCategoryButton.TabIndex = 4;
+            this._enterCategoryButton.Text = "button1";
+            this._enterCategoryButton.UseVisualStyleBackColor = true;
+            this._enterCategoryButton.Click += new System.EventHandler(this.EnterCategory);
             // 
             // _mealUsingThisCategoryList
             // 
             this._mealUsingThisCategoryList.FormattingEnabled = true;
-            this._mealUsingThisCategoryList.ItemHeight = 16;
-            this._mealUsingThisCategoryList.Location = new System.Drawing.Point(9, 95);
+            this._mealUsingThisCategoryList.Location = new System.Drawing.Point(7, 77);
+            this._mealUsingThisCategoryList.Margin = new System.Windows.Forms.Padding(2);
             this._mealUsingThisCategoryList.Name = "_mealUsingThisCategoryList";
-            this._mealUsingThisCategoryList.Size = new System.Drawing.Size(519, 244);
+            this._mealUsingThisCategoryList.Size = new System.Drawing.Size(390, 199);
             this._mealUsingThisCategoryList.TabIndex = 3;
             // 
-            // _enterCategoryButton
+            // _mealUsingThisCategoryLabel
             // 
-            this._enterCategoryButton.Location = new System.Drawing.Point(453, 351);
-            this._enterCategoryButton.Name = "_enterCategoryButton";
-            this._enterCategoryButton.Size = new System.Drawing.Size(75, 30);
-            this._enterCategoryButton.TabIndex = 4;
-            this._enterCategoryButton.Text = "button1";
-            this._enterCategoryButton.UseVisualStyleBackColor = true;
-            this._enterCategoryButton.Click += new System.EventHandler(EnterCategory);
+            this._mealUsingThisCategoryLabel.AutoSize = true;
+            this._mealUsingThisCategoryLabel.Location = new System.Drawing.Point(4, 60);
+            this._mealUsingThisCategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._mealUsingThisCategoryLabel.Name = "_mealUsingThisCategoryLabel";
+            this._mealUsingThisCategoryLabel.Size = new System.Drawing.Size(135, 13);
+            this._mealUsingThisCategoryLabel.TabIndex = 2;
+            this._mealUsingThisCategoryLabel.Text = "Meal(s) Using this Category";
+            // 
+            // _categoryNameTextBox
+            // 
+            this._categoryNameTextBox.AccessibleName = "_categoryNameTextBox";
+            this._categoryNameTextBox.Enabled = false;
+            this._categoryNameTextBox.Location = new System.Drawing.Point(103, 25);
+            this._categoryNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this._categoryNameTextBox.Name = "_categoryNameTextBox";
+            this._categoryNameTextBox.Size = new System.Drawing.Size(294, 20);
+            this._categoryNameTextBox.TabIndex = 1;
+            this._categoryNameTextBox.TextChanged += new System.EventHandler(this.JudgeModifyCategoryData);
+            // 
+            // _categoryNameLabel
+            // 
+            this._categoryNameLabel.AutoSize = true;
+            this._categoryNameLabel.Location = new System.Drawing.Point(4, 28);
+            this._categoryNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._categoryNameLabel.Name = "_categoryNameLabel";
+            this._categoryNameLabel.Size = new System.Drawing.Size(93, 13);
+            this._categoryNameLabel.TabIndex = 0;
+            this._categoryNameLabel.Text = "Category Name (*)";
+            // 
+            // _deleteCategoryButton
+            // 
+            this._deleteCategoryButton.Enabled = false;
+            this._deleteCategoryButton.Location = new System.Drawing.Point(127, 296);
+            this._deleteCategoryButton.Margin = new System.Windows.Forms.Padding(2);
+            this._deleteCategoryButton.Name = "_deleteCategoryButton";
+            this._deleteCategoryButton.Size = new System.Drawing.Size(139, 24);
+            this._deleteCategoryButton.TabIndex = 3;
+            this._deleteCategoryButton.Text = "Delete Selected Category";
+            this._deleteCategoryButton.UseVisualStyleBackColor = true;
+            this._deleteCategoryButton.Click += new System.EventHandler(this.DeleteCategory);
+            // 
+            // _addCategoryButton
+            // 
+            this._addCategoryButton.Location = new System.Drawing.Point(4, 296);
+            this._addCategoryButton.Margin = new System.Windows.Forms.Padding(2);
+            this._addCategoryButton.Name = "_addCategoryButton";
+            this._addCategoryButton.Size = new System.Drawing.Size(112, 24);
+            this._addCategoryButton.TabIndex = 2;
+            this._addCategoryButton.Text = "Add New Category";
+            this._addCategoryButton.UseVisualStyleBackColor = true;
+            this._addCategoryButton.Click += new System.EventHandler(this.ChangeAddCategoryMode);
+            // 
+            // _categoryListBox
+            // 
+            this._categoryListBox.AccessibleName = "_categoryListBox";
+            this._categoryListBox.FormattingEnabled = true;
+            this._categoryListBox.Location = new System.Drawing.Point(4, 5);
+            this._categoryListBox.Margin = new System.Windows.Forms.Padding(2);
+            this._categoryListBox.Name = "_categoryListBox";
+            this._categoryListBox.Size = new System.Drawing.Size(261, 277);
+            this._categoryListBox.TabIndex = 0;
+            this._categoryListBox.Click += new System.EventHandler(this.ChangeEditCategoryMode);
             // 
             // POSRestaurantSideForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 453);
+            this.ClientSize = new System.Drawing.Size(699, 368);
             this.Controls.Add(this._tabControl);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "POSRestaurantSideForm";
             this.Text = "POS-Restaurant Side";
             this._tabControl.ResumeLayout(false);
