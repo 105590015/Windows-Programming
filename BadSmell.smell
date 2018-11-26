@@ -424,7 +424,12 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>MainFormUITest.cs</RelativePath>
+                <RelativePath>CustomerFormUITest.cs</RelativePath>
+                <ProjectName>HomeworkCodedUITests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>IntegrateUITest.cs</RelativePath>
                 <ProjectName>HomeworkCodedUITests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
@@ -434,7 +439,17 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>RestaurantUITest.cs</RelativePath>
+                <ProjectName>HomeworkCodedUITests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Robot.cs</RelativePath>
+                <ProjectName>HomeworkCodedUITests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>StartUpFormUITest.cs</RelativePath>
                 <ProjectName>HomeworkCodedUITests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>

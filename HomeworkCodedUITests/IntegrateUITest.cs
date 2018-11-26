@@ -86,18 +86,38 @@ namespace HomeworkCodedUITests
             Robot.SetForm(RESTAURANT_TITLE);
             Robot.ClickListViewByValue(RESTAURANT_TITLE, "起司脆薯牛堡");
             Robot.AssertButtonEnable("Delete Selected Meal", false);
+            Robot.ClickListViewByValue(RESTAURANT_TITLE, "安格斯黑牛堡");
+            Robot.ClickButton("Delete Selected Meal");
+            Robot.ClickListViewByValue(RESTAURANT_TITLE, "麥香雞");
+            Robot.ClickButton("Delete Selected Meal");
+            Robot.ClickListViewByValue(RESTAURANT_TITLE, "麥香魚");
+            Robot.ClickButton("Delete Selected Meal");
+            Robot.ClickListViewByValue(RESTAURANT_TITLE, "卡啦雞腿堡");
+            Robot.ClickButton("Delete Selected Meal");
+            Robot.ClickListViewByValue(RESTAURANT_TITLE, "烤雞腿堡");
+            Robot.ClickButton("Delete Selected Meal");
+            Robot.ClickListViewByValue(RESTAURANT_TITLE, "經典脆雞堡");
+            Robot.ClickButton("Delete Selected Meal");
+            Robot.SetForm(CUSTOMER_TITLE);
+            Robot.AssertText("_pageLabel", "Page：1 / 1");
         }
 
         //更新類別
         [TestMethod]
         public void UpdateCategoryTest()
         {
+            string[] order = { "X", "烤雞腿堡套餐", "Test", "109元", "1", "109元" };
+            Robot.SetForm(CUSTOMER_TITLE);
+            Robot.ClickTabControl("套餐");
+            Robot.ClickButton("烤雞腿堡套餐\r\n109元");
+            Robot.ClickButton("Add");
             Robot.SetForm(RESTAURANT_TITLE);
             Robot.ClickTabControl("Category Manager");
             Robot.ClickListViewByValue(RESTAURANT_TITLE, "套餐");
             Robot.SetEdit("_categoryNameTextBox", "Test");
             Robot.ClickButton("Save");
             Robot.SetForm(CUSTOMER_TITLE);
+            Robot.AssertDataGridViewByIndex("_checkDataGridView", "1", order);
             Robot.ClickTabControl("Test");
             Robot.ClickButton("烤雞腿堡套餐\r\n109元");
             Robot.AssertEdit("_descriptionBox", "肯德基紐奧良烤雞腿堡搭配金黃脆薯，讓你美味聚餐不設限！\r");

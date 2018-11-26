@@ -149,7 +149,7 @@ namespace HomeworkCodedUITests
             window.WindowTitles.Add(name);
             WinTitleBar bar = new WinTitleBar(window);
             WinButton button = new WinButton(bar);
-            button.SearchProperties[WinButton.PropertyNames.Name] = "Close";
+            button.SearchProperties[WinButton.PropertyNames.Name] = "關閉";
             Mouse.Click(button);
         }
 
@@ -340,6 +340,34 @@ namespace HomeworkCodedUITests
             row.SearchProperties.Add(WinRow.PropertyNames.RowIndex, index);
             UITestControlCollection collection = row.GetChildren();
             Mouse.Click(collection[0]);
+        }
+
+        public static void SelectFileByOpenFileDialog(string formName, string[] fileName)
+        {
+            WinWindow UIMealpicturepathWindow = (WinWindow)Robot.FindWinControl(typeof(WinWindow), formName, null);
+            WinWindow UIItemWindow = (WinWindow)Robot.FindWinControl(typeof(WinWindow), "項目檢視", UIMealpicturepathWindow);
+            foreach (var file in fileName)
+            {
+                WinListItem UIResourcesListItem = new WinListItem(UIItemWindow);
+                UIResourcesListItem.SearchProperties[WinListItem.PropertyNames.Name] = file;
+
+                WinEdit ItemEdit = new WinEdit(UIResourcesListItem);
+                ItemEdit.SearchProperties[WinEdit.PropertyNames.Name] = "名稱";
+
+                Mouse.DoubleClick(ItemEdit);
+            }
+        }
+
+        public static void SetDataGridViewQuantity(string name, string index, string qty)
+        {
+            WinTable table = (WinTable)Robot.FindWinControl(typeof(WinTable), name, _root);
+            WinRow _Winrow = new WinRow(table);
+            _Winrow.SearchProperties.Add(WinRow.PropertyNames.RowIndex, index);
+            _Winrow.Find();
+            UITestControlCollection collection = _Winrow.GetChildren();
+            WinCell cell = collection[4] as WinCell;
+            cell.Value = qty;
+            Keyboard.SendKeys("{Enter}");
         }
     }
 }

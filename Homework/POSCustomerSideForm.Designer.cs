@@ -40,12 +40,12 @@
             this._totalPriceLabel = new System.Windows.Forms.Label();
             this._checkDataGridView = new System.Windows.Forms.DataGridView();
             this._deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._orderListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._quantityDataGridViewTextBoxColumn = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
             this._subtotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._orderListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._mealGroupBox.SuspendLayout();
             this._descriptionPanel.SuspendLayout();
@@ -62,19 +62,22 @@
             this._mealGroupBox.Controls.Add(this._nextButton);
             this._mealGroupBox.Controls.Add(this._previousButton);
             this._mealGroupBox.Controls.Add(this._pageLabel);
-            this._mealGroupBox.Location = new System.Drawing.Point(12, 12);
+            this._mealGroupBox.Location = new System.Drawing.Point(9, 10);
+            this._mealGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._mealGroupBox.Name = "_mealGroupBox";
-            this._mealGroupBox.Size = new System.Drawing.Size(405, 509);
+            this._mealGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._mealGroupBox.Size = new System.Drawing.Size(304, 414);
             this._mealGroupBox.TabIndex = 16;
             this._mealGroupBox.TabStop = false;
             this._mealGroupBox.Text = "Meals";
             // 
             // _tabControl
             // 
-            this._tabControl.Location = new System.Drawing.Point(6, 21);
+            this._tabControl.Location = new System.Drawing.Point(4, 17);
+            this._tabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._tabControl.Name = "_tabControl";
             this._tabControl.SelectedIndex = 0;
-            this._tabControl.Size = new System.Drawing.Size(395, 351);
+            this._tabControl.Size = new System.Drawing.Size(296, 285);
             this._tabControl.TabIndex = 16;
             this._tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.ChangeTabPage);
             // 
@@ -83,9 +86,10 @@
             this._descriptionPanel.AccessibleName = "";
             this._descriptionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._descriptionPanel.Controls.Add(this._descriptionBox);
-            this._descriptionPanel.Location = new System.Drawing.Point(6, 377);
+            this._descriptionPanel.Location = new System.Drawing.Point(4, 306);
+            this._descriptionPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._descriptionPanel.Name = "_descriptionPanel";
-            this._descriptionPanel.Size = new System.Drawing.Size(395, 64);
+            this._descriptionPanel.Size = new System.Drawing.Size(297, 52);
             this._descriptionPanel.TabIndex = 15;
             // 
             // _descriptionBox
@@ -96,18 +100,20 @@
             this._descriptionBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this._descriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._descriptionBox.Location = new System.Drawing.Point(0, 0);
+            this._descriptionBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._descriptionBox.Name = "_descriptionBox";
             this._descriptionBox.ReadOnly = true;
-            this._descriptionBox.Size = new System.Drawing.Size(393, 62);
+            this._descriptionBox.Size = new System.Drawing.Size(295, 50);
             this._descriptionBox.TabIndex = 14;
             this._descriptionBox.Text = "";
             // 
             // _addButton
             // 
             this._addButton.Enabled = false;
-            this._addButton.Location = new System.Drawing.Point(285, 447);
+            this._addButton.Location = new System.Drawing.Point(214, 363);
+            this._addButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._addButton.Name = "_addButton";
-            this._addButton.Size = new System.Drawing.Size(115, 25);
+            this._addButton.Size = new System.Drawing.Size(86, 20);
             this._addButton.TabIndex = 12;
             this._addButton.Text = "Add";
             this._addButton.UseVisualStyleBackColor = true;
@@ -115,9 +121,10 @@
             // 
             // _nextButton
             // 
-            this._nextButton.Location = new System.Drawing.Point(285, 478);
+            this._nextButton.Location = new System.Drawing.Point(214, 388);
+            this._nextButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._nextButton.Name = "_nextButton";
-            this._nextButton.Size = new System.Drawing.Size(115, 25);
+            this._nextButton.Size = new System.Drawing.Size(86, 20);
             this._nextButton.TabIndex = 11;
             this._nextButton.Text = "Next Page";
             this._nextButton.UseVisualStyleBackColor = true;
@@ -126,9 +133,10 @@
             // _previousButton
             // 
             this._previousButton.Enabled = false;
-            this._previousButton.Location = new System.Drawing.Point(164, 478);
+            this._previousButton.Location = new System.Drawing.Point(123, 388);
+            this._previousButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._previousButton.Name = "_previousButton";
-            this._previousButton.Size = new System.Drawing.Size(115, 25);
+            this._previousButton.Size = new System.Drawing.Size(86, 20);
             this._previousButton.TabIndex = 9;
             this._previousButton.Text = "Previous Page";
             this._previousButton.UseVisualStyleBackColor = true;
@@ -136,12 +144,14 @@
             // 
             // _pageLabel
             // 
+            this._pageLabel.AccessibleName = "_pageLabel";
             this._pageLabel.AutoSize = true;
             this._pageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this._pageLabel.ForeColor = System.Drawing.Color.DodgerBlue;
-            this._pageLabel.Location = new System.Drawing.Point(6, 479);
+            this._pageLabel.Location = new System.Drawing.Point(4, 389);
+            this._pageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this._pageLabel.Name = "_pageLabel";
-            this._pageLabel.Size = new System.Drawing.Size(64, 20);
+            this._pageLabel.Size = new System.Drawing.Size(55, 17);
             this._pageLabel.TabIndex = 13;
             this._pageLabel.Text = "Page：";
             // 
@@ -149,9 +159,10 @@
             // 
             this._totalPriceLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 20F);
             this._totalPriceLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this._totalPriceLabel.Location = new System.Drawing.Point(423, 481);
+            this._totalPriceLabel.Location = new System.Drawing.Point(317, 391);
+            this._totalPriceLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this._totalPriceLabel.Name = "_totalPriceLabel";
-            this._totalPriceLabel.Size = new System.Drawing.Size(547, 43);
+            this._totalPriceLabel.Size = new System.Drawing.Size(410, 35);
             this._totalPriceLabel.TabIndex = 14;
             this._totalPriceLabel.Text = "Total：0元";
             this._totalPriceLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -174,11 +185,12 @@
             this._subtotalDataGridViewTextBoxColumn});
             this._checkDataGridView.DataSource = this._orderListBindingSource;
             this._checkDataGridView.Font = new System.Drawing.Font("Microsoft JhengHei", 9F);
-            this._checkDataGridView.Location = new System.Drawing.Point(423, 12);
+            this._checkDataGridView.Location = new System.Drawing.Point(317, 10);
+            this._checkDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._checkDataGridView.Name = "_checkDataGridView";
             this._checkDataGridView.RowHeadersVisible = false;
             this._checkDataGridView.RowTemplate.Height = 24;
-            this._checkDataGridView.Size = new System.Drawing.Size(547, 466);
+            this._checkDataGridView.Size = new System.Drawing.Size(410, 379);
             this._checkDataGridView.TabIndex = 15;
             this._checkDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDelete);
             this._checkDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.RefreshTotalPrice);
@@ -191,11 +203,6 @@
             this._deleteColumn.Name = "_deleteColumn";
             this._deleteColumn.Text = "X";
             this._deleteColumn.UseColumnTextForButtonValue = true;
-            // 
-            // _orderListBindingSource
-            // 
-            this._orderListBindingSource.DataMember = "OrdersList";
-            this._orderListBindingSource.DataSource = this._modelBindingSource;
             // 
             // _nameDataGridViewTextBoxColumn
             // 
@@ -244,18 +251,24 @@
             this._subtotalDataGridViewTextBoxColumn.Name = "_subtotalDataGridViewTextBoxColumn";
             this._subtotalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // _orderListBindingSource
+            // 
+            this._orderListBindingSource.DataMember = "OrdersList";
+            this._orderListBindingSource.DataSource = this._modelBindingSource;
+            // 
             // _modelBindingSource
             // 
             this._modelBindingSource.DataSource = typeof(Homework.Model);
             // 
             // POSCustomerSideForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 533);
+            this.ClientSize = new System.Drawing.Size(736, 433);
             this.Controls.Add(this._totalPriceLabel);
             this.Controls.Add(this._checkDataGridView);
             this.Controls.Add(this._mealGroupBox);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "POSCustomerSideForm";
             this.Text = "POS-Customer Side";
             this._mealGroupBox.ResumeLayout(false);

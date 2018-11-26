@@ -46,6 +46,8 @@ namespace HomeworkCodedUITests
             Robot.AssertButtonEnable("Add", false);
             Robot.DeleteDataGridViewRowByIndex("_checkDataGridView", "1");
             Robot.AssertDataGridViewByIndex("_checkDataGridView", "1", order3);
+            Robot.SetDataGridViewQuantity("_checkDataGridView", "1", "1");
+            Robot.AssertDataGridViewByIndex("_checkDataGridView", "1", order2);
             Robot.DeleteDataGridViewRowByIndex("_checkDataGridView", "0");
         }
 

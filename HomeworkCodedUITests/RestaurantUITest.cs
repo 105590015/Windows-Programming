@@ -27,6 +27,7 @@ namespace HomeworkCodedUITests
         [TestMethod]
         public void EditMealTest()
         {
+            string[] path = { "Image", "meal04" };
             Robot.AssertButtonEnable("Browse", false);
             Robot.AssertButtonEnable("Save", false);
             Robot.ClickListViewByValue(RESTAURANT_TITLE, "勁辣雞腿堡\r");
@@ -46,12 +47,13 @@ namespace HomeworkCodedUITests
             Robot.SetComboBox("_categoryComboBox", "套餐");
             Robot.AssertButtonEnable("Save", true);
             Robot.ClickListViewByValue(RESTAURANT_TITLE, "嫩煎雞腿堡\r");
-            Robot.ClickButton("Browse");
-            Robot.ClickOtherFormButton("Open", "Close");
             Robot.SetEdit("_imagePathTextBox", "Test");
             Robot.ClickButton("Save");
             Robot.SendKeyEnterToMessageBox("輸入錯誤");
-            Robot.SetEdit("_imagePathTextBox", "/Image/meal04.png");
+            Robot.ClickButton("Browse");
+            Robot.CloseWindow("開啟");
+            Robot.ClickButton("Browse");
+            Robot.SelectFileByOpenFileDialog("開啟", path);
             Robot.ClickButton("Save");
         }
 
@@ -121,6 +123,12 @@ namespace HomeworkCodedUITests
             Robot.ClickListViewByValue(RESTAURANT_TITLE, "漢堡\r");
             Robot.AssertButtonEnable("Delete Selected Category", true);
             Robot.ClickButton("Delete Selected Category");
+            Robot.ClickListViewByValue(RESTAURANT_TITLE, "套餐\r");
+            Robot.ClickButton("Delete Selected Category");
+            Robot.ClickListViewByValue(RESTAURANT_TITLE, "飲料\r");
+            Robot.ClickButton("Delete Selected Category");
+            Robot.ClickTabControl("Meal Manager");
+            Robot.AssertComboBox("_categoryComboBox", null);
         }
 
         /// <summary>
