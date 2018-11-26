@@ -3,9 +3,8 @@ using System.ComponentModel;
 
 namespace Homework
 {
-    public class Meal : INotifyPropertyChanged
+    public class Meal
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         private string _name;
         private Category _category;
         private int _price;

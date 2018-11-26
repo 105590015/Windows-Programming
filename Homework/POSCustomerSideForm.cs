@@ -21,7 +21,7 @@ namespace Homework
         {
             InitializeComponent();
             _customerFormPresentationModel = new CustomerFormPresentationModel(model);
-            _customerFormPresentationModel.GetModel().ModelChanged += UpdateView;
+            _customerFormPresentationModel.GetModel()._modelChanged += UpdateView;
             _customerFormPresentationModel.GetModel().NotifyObserver();
             _nextButton.DataBindings.Add(ENABLE, _customerFormPresentationModel, "NextEnable");
             _previousButton.DataBindings.Add(ENABLE, _customerFormPresentationModel, "PreviousEnable");
@@ -144,14 +144,21 @@ namespace Homework
                 ResetTabPage(categoriesList);
             else
             {
-                for(int i = 0; i < _tabControl.Controls.Count; i++)
-                    ((TabPage)(_tabControl.Controls[i])).Text = categoriesList[i].Name;
+                ResetTabName();
                 ResetMealButton(_tabControl.SelectedIndex);
             }
             _customerFormPresentationModel.ClearMeal();
             _descriptionBox.Text = _customerFormPresentationModel.GetDescriptionText();
             _customerFormPresentationModel.ChangeCategory(_tabControl.SelectedIndex);
             _pageLabel.Text = _customerFormPresentationModel.GetModel().GetComputeModel().GetPageInformation();
+        }
+
+        //更新類別名稱
+        private void ResetTabName()
+        {
+            BindingList<Category> categoriesList = _customerFormPresentationModel.GetModel().CategoriesList;
+            for (int i = 0; i < _tabControl.Controls.Count; i++)
+                ((TabPage)(_tabControl.Controls[i])).Text = categoriesList[i].Name;
         }
 
         //資料連結管理

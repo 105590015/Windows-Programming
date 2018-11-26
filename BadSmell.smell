@@ -188,22 +188,6 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>ICS(Delegate與Event-3)</SmellType>
-              <HashCode>DelegateAndEvent3.Model.ModelChanged</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Homework</Project>
-              <File>Model.cs</File>
-              <Line>9</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>ICS(Delegate 與 Event-3) event 的變數命名如一般 class 中的成員變數</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>2</Id>
               <SmellType>Long parameter list(過長參數列)</SmellType>
               <HashCode>LongParameterList.RestaurantFormMealPresentationModel.JudgeModifyData.string name;string price;string category;string imagePath;string description;</HashCode>
               <Severity>Warning</Severity>
@@ -219,23 +203,23 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>3</Id>
+              <Id>2</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>232 目前物件 Homework.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Meal，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Meal.GetCategory() 以及 Homework.Meal.IsSameCategory(Homework.Meal)</HashCode>
+              <HashCode>226 目前物件 Homework.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Meal，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Meal.GetCategory() 以及 Homework.Meal.IsSameCategory(Homework.Meal)</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>Homework</Project>
               <File>D:\SourceTree\Windows_Programming\Homework\Model.cs</File>
-              <Line>232</Line>
-              <StartLine>231</StartLine>
+              <Line>226</Line>
+              <StartLine>225</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>232</EndLine>
+              <EndLine>226</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 Homework.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Meal，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Meal.GetCategory() 以及 Homework.Meal.IsSameCategory(Homework.Meal)</Comment>
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>4</Id>
+              <Id>3</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>108 目前物件 Homework.POSCustomerSideForm，使用物件的方法或屬性次數：1次，Envy到對象物件 Homework.Category，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Category.Name 以及 Homework.Category.Name</HashCode>
               <Severity>Warning</Severity>
@@ -253,7 +237,6 @@
           </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList>
-            <string>DelegateAndEvent3.Model.ModelChanged</string>
             <string>LongParameterList.RestaurantFormMealPresentationModel.JudgeModifyData.string name;string price;string category;string imagePath;string description;</string>
           </HashCodeRequestIgnoreList>
           <AnalysisFileManager>
@@ -455,8 +438,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2920</ProductionLoc>
-          <TestLoc>3200</TestLoc>
+          <ProductionLoc>2968</ProductionLoc>
+          <TestLoc>3639</TestLoc>
         </CodeReview>
       </Data>
     </div>

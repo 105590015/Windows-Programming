@@ -6,7 +6,7 @@ namespace Homework
 {
     public class Model
     {
-        public event ModelChangedEventHandler ModelChanged;
+        public event ModelChangedEventHandler _modelChanged;
         public delegate void ModelChangedEventHandler();
         private ComputeModel _computeModel = new ComputeModel();
         private int _tabIndex;
@@ -293,8 +293,8 @@ namespace Homework
         //通知View變化
         public void NotifyObserver()
         {
-            if (ModelChanged != null)
-                ModelChanged.Invoke();
+            if (_modelChanged != null)
+                _modelChanged.Invoke();
         }
     }
 }

@@ -256,7 +256,7 @@ namespace Homework.Tests
             List<string> nameOfPropertyChanged = new List<string>();
             Model model = new Model();
             Category category = new Category("Test");
-            model.ModelChanged += Test;
+            model._modelChanged += Test;
             model.AddCategory(category);
             Assert.AreEqual(1, observerTest);
         }
