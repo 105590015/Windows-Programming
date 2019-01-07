@@ -1,0 +1,1 @@
+D:\SourceTree\Windows_Programming\DrawingApp\DrawingApp.csproj;x86
