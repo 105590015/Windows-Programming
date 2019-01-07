@@ -1,3 +1,4 @@
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\WindowsProgramingData.txt
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\App.xbf
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\MainPage.xbf
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\DrawingApp.xr.xml
@@ -8,6 +9,15 @@ D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\AppxManifest.xml
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Core\AppxManifest.xml
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Core\DrawingApp.exe
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\DrawingApp.build.appxrecipe
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.pdb
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Auth.PlatformServices.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Auth.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Auth.pdb
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Core.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Core.pdb
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Drive.v2.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Drive.v2.pdb
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Microsoft.CSharp.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.ComponentModel.DataAnnotations.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Core.dll
@@ -22,6 +32,7 @@ D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Xml.Serializat
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Xml.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Microsoft.VisualBasic.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Newtonsoft.Json.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Collections.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Diagnostics.Tools.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Diagnostics.Tracing.dll
@@ -40,6 +51,7 @@ D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Text.Encoding.
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Threading.Tasks.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Threading.Timer.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Microsoft.Win32.Primitives.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Console.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Diagnostics.Debug.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.IO.FileSystem.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Net.Primitives.dll
@@ -57,6 +69,8 @@ D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Collections.Sp
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.ComponentModel.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.ComponentModel.Annotations.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.ComponentModel.EventBasedAsync.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.ComponentModel.Primitives.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.ComponentModel.TypeConverter.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Data.Common.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Diagnostics.Contracts.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Diagnostics.DiagnosticSource.dll
@@ -92,8 +106,10 @@ D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Reflection.Emi
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Reflection.Emit.Lightweight.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Reflection.Metadata.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Reflection.TypeExtensions.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.InteropServices.WindowsRuntime.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.Numerics.dll
+D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.Serialization.Formatters.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.Serialization.Json.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.Serialization.Primitives.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.Serialization.Xml.dll
@@ -122,6 +138,7 @@ D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Xml.ReaderWrit
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Xml.XDocument.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Xml.XmlDocument.dll
 D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Xml.XmlSerializer.dll
+D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\DrawingApp.csprojAssemblyReference.cache
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\App.g.i.cs
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\App.g.cs
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\MainPage.g.i.cs
@@ -142,6 +159,7 @@ D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.Microsoft
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Collections.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.IO.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.InteropServices.SR.resw
+D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Console.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Diagnostics.Debug.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.IO.FileSystem.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Net.Primitives.SR.resw
@@ -155,6 +173,8 @@ D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Co
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Collections.Specialized.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.ComponentModel.Annotations.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.ComponentModel.EventBasedAsync.SR.resw
+D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.ComponentModel.Primitives.SR.resw
+D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.ComponentModel.TypeConverter.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Data.Common.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Dynamic.Runtime.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Globalization.Extensions.SR.resw
@@ -179,7 +199,9 @@ D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Pr
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Private.ServiceModel.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Reflection.DispatchProxy.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Reflection.Metadata.SR.resw
+D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.InteropServices.RuntimeInformation.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.Numerics.SR.resw
+D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.Serialization.Formatters.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.Serialization.Primitives.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.WindowsRuntime.SR.resw
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.WindowsRuntime.UI.Xaml.SR.resw
@@ -215,25 +237,3 @@ D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\qualifiers.txt
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\qualifiers.txt.intermediate
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\ProjectArchitectures.txt
-D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\DrawingApp.csprojAssemblyReference.cache
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\WindowsProgramingData.txt
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.pdb
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Auth.PlatformServices.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Auth.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Auth.pdb
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Core.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Core.pdb
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Drive.v2.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Google.Apis.Drive.v2.pdb
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\Newtonsoft.Json.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Console.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.ComponentModel.Primitives.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.ComponentModel.TypeConverter.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
-D:\SourceTree\Windows_Programming\DrawingApp\bin\x86\Debug\System.Runtime.Serialization.Formatters.dll
-D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Console.SR.resw
-D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.ComponentModel.Primitives.SR.resw
-D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.ComponentModel.TypeConverter.SR.resw
-D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.InteropServices.RuntimeInformation.SR.resw
-D:\SourceTree\Windows_Programming\DrawingApp\obj\x86\Debug\FxResources.System.Runtime.Serialization.Formatters.SR.resw
