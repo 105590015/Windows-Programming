@@ -1,0 +1,1 @@
+建構小畫家的MVC架構，View可以用Windows form和Windows app呈現
